@@ -28,7 +28,7 @@ public class Address implements Serializable {
 
     @Column(name = "state")
     @NotNull
-    private String state;
+    private String stateName;
 
     @Column(name = "country")
     @NotNull
@@ -42,12 +42,12 @@ public class Address implements Serializable {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getStateName() {
+        return stateName;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 
     public String getCountry() {
@@ -62,7 +62,7 @@ public class Address implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 29 * hash + Objects.hashCode(this.city);
-        hash = 29 * hash + Objects.hashCode(this.state);
+        hash = 29 * hash + Objects.hashCode(this.stateName);
         hash = 29 * hash + Objects.hashCode(this.country);
         return hash;
     }
@@ -79,7 +79,7 @@ public class Address implements Serializable {
         if (!Objects.equals(this.city, other.city)) {
             return false;
         }
-        if (!Objects.equals(this.state, other.state)) {
+        if (!Objects.equals(this.stateName, other.stateName)) {
             return false;
         }
         if (!Objects.equals(this.country, other.country)) {
@@ -90,7 +90,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "Address{" + "city=" + city + ", state=" + state + ", country=" + country + '}';
+        return "Address{" + "city=" + city + ", state=" + stateName + ", country=" + country + '}';
     }
 
     public Long getId() {
