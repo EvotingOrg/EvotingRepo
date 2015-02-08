@@ -3,37 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.CreateAddressTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAddressLabel_city}" for="city" />
-                    <h:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.CreateAddressTitle_city}" />
-                    <h:outputLabel value="#{bundle.CreateAddressLabel_state}" for="state" />
-                    <h:inputText id="state" value="#{addressController.selected.state}" title="#{bundle.CreateAddressTitle_state}" />
-                    <h:outputLabel value="#{bundle.CreateAddressLabel_country}" for="country" />
-                    <h:inputText id="country" value="#{addressController.selected.country}" title="#{bundle.CreateAddressTitle_country}" />
-                    <h:outputLabel value="#{bundle.CreateAddressLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.CreateAddressTitle_id}" />
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{addressController.create}" value="#{bundle.CreateAddressSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{addressController.prepareList}" value="#{bundle.CreateAddressShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAddressIndexLink}"/>
+    <ui:composition>
+
+        <p:dialog id="AddressCreateDlg" widgetVar="AddressCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAddressTitle}">
+            <h:form id="AddressCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{addressController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAddressLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.CreateAddressTitle_city}" />
+                        <p:outputLabel value="#{bundle.CreateAddressLabel_stateName}" for="stateName" />
+                        <p:inputText id="stateName" value="#{addressController.selected.stateName}" title="#{bundle.CreateAddressTitle_stateName}" />
+                        <p:outputLabel value="#{bundle.CreateAddressLabel_country}" for="country" />
+                        <p:inputText id="country" value="#{addressController.selected.country}" title="#{bundle.CreateAddressTitle_country}" />
+                        <p:outputLabel value="#{bundle.CreateAddressLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.CreateAddressTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{addressController.create}" value="#{bundle.Save}" update="display,:AddressListForm:datalist,:growl" oncomplete="handleSubmit(args,'AddressCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AddressCreateDialog.hide()"/>
+                </h:panelGroup>
             </h:form>
-        </ui:define>
-    </ui:composition>
+        </p:dialog>
 
+    </ui:composition>
 </html>

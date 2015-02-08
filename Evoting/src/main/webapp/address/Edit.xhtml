@@ -3,38 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditAddressTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditAddressLabel_city}" for="city" />
-                    <h:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.EditAddressTitle_city}" />
-                    <h:outputLabel value="#{bundle.EditAddressLabel_state}" for="state" />
-                    <h:inputText id="state" value="#{addressController.selected.state}" title="#{bundle.EditAddressTitle_state}" />
-                    <h:outputLabel value="#{bundle.EditAddressLabel_country}" for="country" />
-                    <h:inputText id="country" value="#{addressController.selected.country}" title="#{bundle.EditAddressTitle_country}" />
-                    <h:outputLabel value="#{bundle.EditAddressLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.EditAddressTitle_id}" />
-                </h:panelGrid>
-                <h:commandLink action="#{addressController.update}" value="#{bundle.EditAddressSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditAddressViewLink}"/>
-                <br />
-                <h:commandLink action="#{addressController.prepareList}" value="#{bundle.EditAddressShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAddressIndexLink}" />
+    <ui:composition>
+
+        <p:dialog id="AddressEditDlg" widgetVar="AddressEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAddressTitle}">
+            <h:form id="AddressEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{addressController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAddressLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.EditAddressTitle_city}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_stateName}" for="stateName" />
+                        <p:inputText id="stateName" value="#{addressController.selected.stateName}" title="#{bundle.EditAddressTitle_stateName}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_country}" for="country" />
+                        <p:inputText id="country" value="#{addressController.selected.country}" title="#{bundle.EditAddressTitle_country}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.EditAddressTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{addressController.update}" value="#{bundle.Save}" update="display,:AddressListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AddressEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AddressEditDialog.hide()"/>
+                </h:panelGroup>
             </h:form>
-        </ui:define>
-    </ui:composition>
+        </p:dialog>
 
+    </ui:composition>
 </html>

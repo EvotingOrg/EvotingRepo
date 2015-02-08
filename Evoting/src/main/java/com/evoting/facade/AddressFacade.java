@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.evoting.facade;
 
 import com.evoting.entity.Address;
@@ -13,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author 984166
+ * @author Raj
  */
 @Stateless
 public class AddressFacade extends AbstractFacade<Address> {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserPollsCreateDlg" widgetVar="UserPollsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUserPollsTitle}">
+            <h:form id="UserPollsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userPollsController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUserPollsLabel_userId}" for="userId" />
+                        <p:selectOneMenu id="userId" value="#{userPollsController.selected.userId}" required="true" requiredMessage="#{bundle.EditUserPollsRequiredMessage_userId}">
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userIdItem"
+                                           itemValue="#{userIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateUserPollsLabel_pollOptionId}" for="pollOptionId" />
+                        <p:selectOneMenu id="pollOptionId" value="#{userPollsController.selected.pollOptionId}" required="true" requiredMessage="#{bundle.EditUserPollsRequiredMessage_pollOptionId}">
+                            <f:selectItems value="#{pollOptionsController.itemsAvailableSelectOne}"
+                                           var="pollOptionIdItem"
+                                           itemValue="#{pollOptionIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateUserPollsLabel_pollId}" for="pollId" />
+                        <p:inputText id="pollId" value="#{userPollsController.selected.pollId}" title="#{bundle.CreateUserPollsTitle_pollId}" />
+                        <p:outputLabel value="#{bundle.CreateUserPollsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{userPollsController.selected.id}" title="#{bundle.CreateUserPollsTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userPollsController.create}" value="#{bundle.Save}" update="display,:UserPollsListForm:datalist,:growl" oncomplete="handleSubmit(args,'UserPollsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UserPollsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
