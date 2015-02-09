@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top" class="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">E-voting links temp links</ui:insert>
+            Hello from Facelets
+            <br />
+            <h:link outcome="/book/List" value="Show All Book Items"/>
+            <br />
+            <h:link outcome="/user/List" value="Show All User Items"/>
+            <br />
+            <h:link outcome="/address/List" value="Show All Address Items"/>
+            <br />
+            <h:link outcome="/book/List" value="Show All Book Items"/>
+            <br />
+            <h:link outcome="/candidate/List" value="Show All Candidate Items"/>
+            <br />
+            <h:link outcome="/category/List" value="Show All Category Items"/>
+            <br />
+            <h:link outcome="/election/List" value="Show All Election Items"/>
+            <br />
+            <h:link outcome="/electionCandidate/List" value="Show All ElectionCandidate Items"/>
+            <br />
+            <h:link outcome="/mUser/List" value="Show All MUser Items"/>
+            <br />
+            <h:link outcome="/poll/List" value="Show All Poll Items"/>
+            <br />
+            <h:link outcome="/pollOptions/List" value="Show All PollOptions Items"/>
+            <br />
+            <h:link outcome="/product/List" value="Show All Product Items"/>
+            <br />
+            <h:link outcome="/role/List" value="Show All Role Items"/>
+            <br />
+            <h:link outcome="/user/List" value="Show All User Items"/>
+            <br />
+            <h:link outcome="/userDetail/List" value="Show All UserDetail Items"/>
+            <br />
+            <h:link outcome="/userPolls/List" value="Show All UserPolls Items"/>
+            <br />
+            <h:link outcome="/userProductRating/List" value="Show All UserProductRating Items"/>
+            <br />
+            <h:link outcome="/userRole/List" value="Show All UserRole Items"/>
+        </div>
+
+    </h:body>
+
+</html>
