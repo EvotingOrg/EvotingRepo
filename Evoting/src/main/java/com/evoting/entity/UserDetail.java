@@ -6,14 +6,10 @@
 package com.evoting.entity;
 
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -25,10 +21,12 @@ public class UserDetail extends AbstractLongPKEntity {
 
     @Column(name = "voter_id")
     private String voterId;
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_detail")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Address addressId;
+
+    @Column(name = "phone_no")
+    private String phoneNo;
+    
+    @Embedded
+    private Address address;
 
     public String getVoterId() {
         return voterId;
@@ -38,19 +36,28 @@ public class UserDetail extends AbstractLongPKEntity {
         this.voterId = voterId;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.voterId);
-        hash = 47 * hash + Objects.hashCode(this.addressId);
+        hash = 17 * hash + Objects.hashCode(this.voterId);
+        hash = 17 * hash + Objects.hashCode(this.phoneNo);
+        hash = 17 * hash + Objects.hashCode(this.address);
         return hash;
     }
 
@@ -66,7 +73,10 @@ public class UserDetail extends AbstractLongPKEntity {
         if (!Objects.equals(this.voterId, other.voterId)) {
             return false;
         }
-        if (!Objects.equals(this.addressId, other.addressId)) {
+        if (!Objects.equals(this.phoneNo, other.phoneNo)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
             return false;
         }
         return true;
@@ -74,6 +84,7 @@ public class UserDetail extends AbstractLongPKEntity {
 
     @Override
     public String toString() {
-        return "UserDetail{" + "voterId=" + voterId + ", addressId=" + addressId + '}';
+        return "UserDetail{" + "voterId=" + voterId + ", phoneNo=" + phoneNo + ", address=" + address + '}';
     }
+
 }

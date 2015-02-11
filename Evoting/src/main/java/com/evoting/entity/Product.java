@@ -5,36 +5,47 @@
  */
 package com.evoting.entity;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
  * @author Raj
  */
 @Entity
-@Table(name = "productS")
+@Table(name = "product")
 public class Product extends AbstractLongPKEntity {
 
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @ManyToOne
     private Category categoryId;
+
     @Column(name = "product_name")
     @NotNull
     private String productName;
+
     @Column(name = "release_publish_date")
     @Temporal(TemporalType.DATE)
-    private Date releasePublishDate;
+    private Date distributionDate;
+
     @Column(name = "rating")
     private Double avgRating;
+
+    @OneToMany(mappedBy = "productId")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private Collection<UserRating> userRatings;
 
     public Category getCategoryId() {
         return categoryId;
@@ -52,12 +63,12 @@ public class Product extends AbstractLongPKEntity {
         this.productName = productName;
     }
 
-    public Date getReleasePublishDate() {
-        return releasePublishDate;
+    public Date getDistributionDate() {
+        return distributionDate;
     }
 
-    public void setReleasePublishDate(Date releasePublishDate) {
-        this.releasePublishDate = releasePublishDate;
+    public void setDistributionDate(Date distributionDate) {
+        this.distributionDate = distributionDate;
     }
 
     public Double getAvgRating() {
@@ -68,12 +79,20 @@ public class Product extends AbstractLongPKEntity {
         this.avgRating = avgRating;
     }
 
+    public Collection<UserRating> getUserRatings() {
+        return userRatings;
+    }
+
+    public void setUserRatings(Collection<UserRating> userRatings) {
+        this.userRatings = userRatings;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 89 * hash + Objects.hashCode(this.categoryId);
         hash = 89 * hash + Objects.hashCode(this.productName);
-        hash = 89 * hash + Objects.hashCode(this.releasePublishDate);
+        hash = 89 * hash + Objects.hashCode(this.distributionDate);
         return hash;
     }
 
@@ -92,7 +111,7 @@ public class Product extends AbstractLongPKEntity {
         if (!Objects.equals(this.productName, other.productName)) {
             return false;
         }
-        if (!Objects.equals(this.releasePublishDate, other.releasePublishDate)) {
+        if (!Objects.equals(this.distributionDate, other.distributionDate)) {
             return false;
         }
 
@@ -101,7 +120,7 @@ public class Product extends AbstractLongPKEntity {
 
     @Override
     public String toString() {
-        return "Product{" + "categoryId=" + categoryId + ", productName=" + productName + ", releasePublishDate=" + releasePublishDate + ", avgRating=" + avgRating + '}';
+        return "Product{" + "categoryId=" + categoryId + ", productName=" + productName + ", releasePublishDate=" + distributionDate + ", avgRating=" + avgRating + '}';
     }
 
 }

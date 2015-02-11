@@ -3,24 +3,15 @@ package com.evoting.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author Raj
  */
-@Entity
-@Table(name = "address")
+@Embeddable
 public class Address implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     @Column(name = "city")
     @NotNull
@@ -33,6 +24,15 @@ public class Address implements Serializable {
     @Column(name = "country")
     @NotNull
     private String country;
+
+    public Address() {
+    }
+
+    public Address(String city, String stateName, String country) {
+        this.city = city;
+        this.stateName = stateName;
+        this.country = country;
+    }
 
     public String getCity() {
         return city;
@@ -93,11 +93,4 @@ public class Address implements Serializable {
         return "Address{" + "city=" + city + ", state=" + stateName + ", country=" + country + '}';
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

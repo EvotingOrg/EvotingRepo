@@ -5,14 +5,19 @@
  */
 package com.evoting.entity;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -39,6 +44,10 @@ public class Poll extends AbstractLongPKEntity {
 
     @Column(name = "result")
     private String result;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pollId")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Collection<PollOptions> pollOptions;
 
     public String getTitle() {
         return title;
@@ -78,6 +87,14 @@ public class Poll extends AbstractLongPKEntity {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public Collection<PollOptions> getPollOptions() {
+        return pollOptions;
+    }
+
+    public void setPollOptions(Collection<PollOptions> pollOptions) {
+        this.pollOptions = pollOptions;
     }
 
     @Override

@@ -5,30 +5,42 @@
  */
 package com.evoting.entity;
 
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
  * @author Raj
  */
 @Entity
-@Table(name = "poll_options")
+@Table(name = "poll_options", uniqueConstraints = @UniqueConstraint(columnNames = {"poll_id", "option_name"}))
 public class PollOptions extends AbstractLongPKEntity {
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "poll_id", referencedColumnName = "id")
     private Poll pollId;
+
     @Column(name = "option_name")
     private String optionName;
+
     @Column(name = "total_count")
     private Integer totalCount;
+
     @Column(name = "result")
     private Integer result;
+
+    @OneToMany(mappedBy = "pollOptionId")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Collection<UserPolling> userPollings;
 
     public Poll getPollId() {
         return pollId;
@@ -60,6 +72,14 @@ public class PollOptions extends AbstractLongPKEntity {
 
     public void setResult(Integer result) {
         this.result = result;
+    }
+
+    public Collection<UserPolling> getUserPollings() {
+        return userPollings;
+    }
+
+    public void setUserPollings(Collection<UserPolling> userPollings) {
+        this.userPollings = userPollings;
     }
 
     @Override

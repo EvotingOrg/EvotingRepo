@@ -5,36 +5,47 @@
  */
 package com.evoting.entity;
 
+import static com.evoting.entity.Candidate_.name;
+import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Raj
  */
 @Entity
-@Table(name = "user_polls")
-public class UserPolls extends AbstractLongPKEntity {
+@Table(name = "user_polls", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "poll_id", "poll_option_id"}))
+public class UserPolling extends AbstractLongPKEntity {
 
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private User userId;
-
-    @JoinColumn(name = "poll_option_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PollOptions pollOptionId;
+    @ManyToOne
+    private Users userId;
 
     @JoinColumn(name = "poll_id", referencedColumnName = "id")
+    @ManyToOne
     private Poll pollId;
 
-    public User getUserId() {
+    @JoinColumn(name = "poll_option_id", referencedColumnName = "id")
+    @ManyToOne
+    private PollOptions pollOptionId;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "polled_date")
+    private Date pollingTime;
+
+    public Users getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Users userId) {
         this.userId = userId;
     }
 
@@ -54,12 +65,21 @@ public class UserPolls extends AbstractLongPKEntity {
         this.pollId = pollId;
     }
 
+    public Date getPollingTime() {
+        return pollingTime;
+    }
+
+    public void setPollingTime(Date pollingTime) {
+        this.pollingTime = pollingTime;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.userId);
-        hash = 79 * hash + Objects.hashCode(this.pollOptionId);
-        hash = 79 * hash + Objects.hashCode(this.pollId);
+        hash = 97 * hash + Objects.hashCode(this.userId);
+        hash = 97 * hash + Objects.hashCode(this.pollId);
+        hash = 97 * hash + Objects.hashCode(this.pollOptionId);
+        hash = 97 * hash + Objects.hashCode(this.pollingTime);
         return hash;
     }
 
@@ -71,14 +91,17 @@ public class UserPolls extends AbstractLongPKEntity {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UserPolls other = (UserPolls) obj;
+        final UserPolling other = (UserPolling) obj;
         if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        if (!Objects.equals(this.pollId, other.pollId)) {
             return false;
         }
         if (!Objects.equals(this.pollOptionId, other.pollOptionId)) {
             return false;
         }
-        if (!Objects.equals(this.pollId, other.pollId)) {
+        if (!Objects.equals(this.pollingTime, other.pollingTime)) {
             return false;
         }
         return true;
@@ -86,6 +109,7 @@ public class UserPolls extends AbstractLongPKEntity {
 
     @Override
     public String toString() {
-        return "UserPolls{" + "userId=" + userId + ", pollOptionId=" + pollOptionId + ", pollId=" + pollId + '}';
+        return "UserPolling{" + "userId=" + userId + ", pollId=" + pollId + ", pollOptionId=" + pollOptionId + ", pollingTime=" + pollingTime + '}';
     }
+
 }

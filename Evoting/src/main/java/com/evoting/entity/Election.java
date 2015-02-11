@@ -6,11 +6,15 @@
 package com.evoting.entity;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -24,9 +28,17 @@ public class Election extends AbstractLongPKEntity {
 
     @Column(name = "election_name")
     private String electionName;
+   
     @Column(name = "descrition")
     private String description;
-    @OneToMany
+    
+    @Temporal(TemporalType.DATE)
+    private Date fromDate;
+    
+    @Temporal(TemporalType.DATE)
+    private Date toDate;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "electionId")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<ElectionCandidate> elctionCandidates;
 
@@ -46,6 +58,22 @@ public class Election extends AbstractLongPKEntity {
         this.description = description;
     }
 
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
     public Collection<ElectionCandidate> getElctionCandidates() {
         return elctionCandidates;
     }
@@ -57,9 +85,11 @@ public class Election extends AbstractLongPKEntity {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.electionName);
-        hash = 79 * hash + Objects.hashCode(this.description);
-        hash = 79 * hash + Objects.hashCode(this.elctionCandidates);
+        hash = 41 * hash + Objects.hashCode(this.electionName);
+        hash = 41 * hash + Objects.hashCode(this.description);
+        hash = 41 * hash + Objects.hashCode(this.fromDate);
+        hash = 41 * hash + Objects.hashCode(this.toDate);
+        hash = 41 * hash + Objects.hashCode(this.elctionCandidates);
         return hash;
     }
 
@@ -78,6 +108,12 @@ public class Election extends AbstractLongPKEntity {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.fromDate, other.fromDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.toDate, other.toDate)) {
+            return false;
+        }
         if (!Objects.equals(this.elctionCandidates, other.elctionCandidates)) {
             return false;
         }
@@ -86,7 +122,7 @@ public class Election extends AbstractLongPKEntity {
 
     @Override
     public String toString() {
-        return "Election{" + "electionName=" + electionName + ", description=" + description + ", elctionCandidates=" + elctionCandidates + '}';
+        return "Election{" + "electionName=" + electionName + ", description=" + description + ", fromDate=" + fromDate + ", toDate=" + toDate + ", elctionCandidates=" + elctionCandidates + '}';
     }
 
 }

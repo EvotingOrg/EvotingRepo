@@ -22,15 +22,15 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "user_product_rating")
-public class UserProductRating extends AbstractLongPKEntity {
+public class UserRating extends AbstractLongPKEntity {
 
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User userId;
+    private Users userId;
 
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Product product;
+    private Product productId;
 
     @Column(name = "date_rated")
     @Temporal(TemporalType.DATE)
@@ -39,20 +39,20 @@ public class UserProductRating extends AbstractLongPKEntity {
     @Column(name = "rating")
     private Float rating;
 
-    public User getUserId() {
+    public Users getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Users userId) {
         this.userId = userId;
     }
 
-    public Product getProduct() {
-        return product;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
 
     public Date getDateRated() {
@@ -75,7 +75,7 @@ public class UserProductRating extends AbstractLongPKEntity {
     public int hashCode() {
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.userId);
-        hash = 71 * hash + Objects.hashCode(this.product);
+        hash = 71 * hash + Objects.hashCode(this.productId);
         hash = 71 * hash + Objects.hashCode(this.dateRated);
         hash = 71 * hash + Objects.hashCode(this.rating);
         return hash;
@@ -89,11 +89,11 @@ public class UserProductRating extends AbstractLongPKEntity {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UserProductRating other = (UserProductRating) obj;
+        final UserRating other = (UserRating) obj;
         if (!Objects.equals(this.userId, other.userId)) {
             return false;
         }
-        if (!Objects.equals(this.product, other.product)) {
+        if (!Objects.equals(this.productId, other.productId)) {
             return false;
         }
         if (!Objects.equals(this.dateRated, other.dateRated)) {
@@ -107,7 +107,7 @@ public class UserProductRating extends AbstractLongPKEntity {
 
     @Override
     public String toString() {
-        return "UserProductRating{" + "userId=" + userId + ", product=" + product + ", dateRated=" + dateRated + ", rating=" + rating + '}';
+        return "UserProductRating{" + "userId=" + userId + ", product=" + productId + ", dateRated=" + dateRated + ", rating=" + rating + '}';
     }
 
 }
