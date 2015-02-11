@@ -31,7 +31,7 @@ public class Users extends AbstractLongPKEntity {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_detail_id")
     @LazyCollection(LazyCollectionOption.FALSE)
     private UserDetail userDetail;
