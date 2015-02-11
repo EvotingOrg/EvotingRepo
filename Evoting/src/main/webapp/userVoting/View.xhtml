@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserVotingViewDlg" widgetVar="UserVotingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUserVotingTitle}">
+            <h:form id="UserVotingViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userVotingController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUserVotingLabel_userId}"/>
+                        <h:outputText value="#{userVotingController.selected.userId}" title="#{bundle.ViewUserVotingTitle_userId}"/>
+                        <h:outputText value="#{bundle.ViewUserVotingLabel_electionCandidateId}"/>
+                        <h:outputText value="#{userVotingController.selected.electionCandidateId}" title="#{bundle.ViewUserVotingTitle_electionCandidateId}"/>
+                        <h:outputText value="#{bundle.ViewUserVotingLabel_voteCastedTime}"/>
+                        <h:outputText value="#{userVotingController.selected.voteCastedTime}" title="#{bundle.ViewUserVotingTitle_voteCastedTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUserVotingLabel_id}"/>
+                        <h:outputText value="#{userVotingController.selected.id}" title="#{bundle.ViewUserVotingTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UserVotingViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

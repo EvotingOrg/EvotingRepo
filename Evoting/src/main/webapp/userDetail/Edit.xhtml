@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserDetailEditDlg" widgetVar="UserDetailEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUserDetailTitle}">
+            <h:form id="UserDetailEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userDetailController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUserDetailLabel_voterId}" for="voterId" />
+                        <p:inputText id="voterId" value="#{userDetailController.selected.voterId}" title="#{bundle.EditUserDetailTitle_voterId}" />
+                        <p:outputLabel value="#{bundle.EditUserDetailLabel_phoneNo}" for="phoneNo" />
+                        <p:inputText id="phoneNo" value="#{userDetailController.selected.phoneNo}" title="#{bundle.EditUserDetailTitle_phoneNo}" />
+                        <p:outputLabel value="#{bundle.EditUserDetailLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{userDetailController.selected.address}" title="#{bundle.EditUserDetailTitle_address}" />
+                        <p:outputLabel value="#{bundle.EditUserDetailLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.EditUserDetailTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userDetailController.update}" value="#{bundle.Save}" update="display,:UserDetailListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UserDetailEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UserDetailEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PollOptionsViewDlg" widgetVar="PollOptionsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPollOptionsTitle}">
+            <h:form id="PollOptionsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pollOptionsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPollOptionsLabel_pollId}"/>
+                        <h:outputText value="#{pollOptionsController.selected.pollId}" title="#{bundle.ViewPollOptionsTitle_pollId}"/>
+                        <h:outputText value="#{bundle.ViewPollOptionsLabel_optionName}"/>
+                        <h:outputText value="#{pollOptionsController.selected.optionName}" title="#{bundle.ViewPollOptionsTitle_optionName}"/>
+                        <h:outputText value="#{bundle.ViewPollOptionsLabel_totalCount}"/>
+                        <h:outputText value="#{pollOptionsController.selected.totalCount}" title="#{bundle.ViewPollOptionsTitle_totalCount}"/>
+                        <h:outputText value="#{bundle.ViewPollOptionsLabel_result}"/>
+                        <h:outputText value="#{pollOptionsController.selected.result}" title="#{bundle.ViewPollOptionsTitle_result}"/>
+                        <h:outputText value="#{bundle.ViewPollOptionsLabel_id}"/>
+                        <h:outputText value="#{pollOptionsController.selected.id}" title="#{bundle.ViewPollOptionsTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PollOptionsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
