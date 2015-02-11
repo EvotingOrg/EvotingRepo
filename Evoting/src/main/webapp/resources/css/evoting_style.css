@@ -1,0 +1,210 @@
+.uniformInputFieldsWidth .ui-inputfield{
+    width: 118px;
+}
+.main_links{
+    font:bold;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 20px;
+    text-height: 30px;
+    color:#666;       
+}
+.main_links a:hover{    
+    font:bold;
+    font-size: 20px;
+    text-height: 40px;
+    color:green;   
+    text-decoration: none;
+    color: #41967C;
+}
+.main_links a:active{
+    font:bold;
+    color:red;
+
+}
+
+#mainwrapper {
+    background-image: url("../images/background.jpg");
+    height: 1000px;
+    width: 1260;
+}
+body{
+
+    background-image: url("../images/background.jpg");
+    font-size: 10px;
+
+}
+
+#custom td.ui-selectonemenu{
+    vertical-align: top;
+}
+.ui-menuitem-text ,label{
+    font-weight: bold;
+    color:black;
+}
+.ui-fieldset-content{
+    font-weight: normal;
+    text-transform: capitalize;
+}
+.ui-button-text,.ui-fieldset-legend{
+    text-transform: uppercase;    
+}
+
+.meetingBlue .fc-event-skin{
+    font-weight: bold;
+    background-color:blue;
+}
+
+.meetingRed .fc-event-skin{
+    font-weight: bold;
+    color: black;
+    background-color: red;
+}
+
+.meetingGreen .fc-event-skin{
+    font-weight: bold;
+    background-color: green;
+}
+
+.meetingOrchid .fc-event-skin{
+    font-weight: bold;
+    background-color: orchid;
+}
+
+.noborder tr, .noborder td {
+    border:0 !important;
+}
+#javax_faces_developmentstage_messages{
+    z-index: 1000;
+}
+#javax_faces_developmentstage_messages li{
+    z-index: 1000;
+}
+#eastPane, #westPane, #centerPane{
+    padding: 0px;
+}
+#eastPane > .ui-panel, #westPane >.ui-panel, #centerPane > .ui-panel{
+    padding: 1px;
+    border: 0;
+}
+#eastPane >.ui-tabs, #westPane > .ui-tabs, #centerPane > .ui-tabs{
+    padding: 1px;
+    border: 0;
+}
+#westPane .ui-panel .ui-panel-content{
+    padding: .5em .5em;
+}
+
+
+.list-row-even{
+    background: #FDFEFE  !important ;
+}
+.list-row-odd{
+    background: #ACDBEA  !important ;  
+
+}
+.list-row-even:hover,.list-row-odd:hover{
+
+}
+.ui-selectonemenu {
+    min-width: 125px;
+    max-width: 125px;
+}
+
+
+.small .ui-selectonemenu{
+    min-width: 30px;
+    max-width: 40px;
+}
+
+.big .ui-selectonemenu{
+    min-width: 230px;
+    max-width: 240px;
+}
+
+
+
+.longer-select-menu{
+    max-width: 250px;    
+}
+.ui-spinner{
+    max-width: 125px;
+}
+.ui-spinner .ui-spinner-input {
+    max-width: 100px;
+}
+
+.headerr{
+    font-size: 17px;
+    font-style: normal;
+    font-weight: bolder;
+}
+
+.alignTopPanel > tbody> tr> td{
+    vertical-align: top;
+}
+
+.verticalAlignTop > tbody > tr > td{
+    vertical-align: top !important;
+}
+.levelTitle{padding:6px 8px 6px 8px;margin-right:3px}
+.ui-button-text{    
+    min-width:50px;
+}
+.ui-dialog .ui-dialog-title {
+    width: 100%;
+
+}
+#slidedown-container #link-add-cirtcut{
+    background: url("../images/slide_down.png") repeat scroll 0 0 transparent;
+
+}
+#slidedown-container #link-show-nav-bar{
+    background: url("../images/plus2.png") repeat scroll 0 0 transparent;    
+
+}
+
+#slidedown-container {
+    overflow: hidden;
+    position: absolute;
+    right: -4px;
+    top: 0;
+
+    z-index: 999;
+    top: -5px;
+}
+#slidedown-container a{
+    float: left;
+    height: 28px;
+    width:  28px;
+    position: relative;
+}
+.top {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+    padding:50px 0 0 50px;
+    z-index: 99;
+}
+
+.shortcut-datatable .ui-state-disabled{
+    opacity: 1;
+}
+
+.remove-line .ui-datatable-data td{
+    border:  none 0px !important;   
+}
+
+.very-short .ui-button-text{
+    min-width: 10px;
+    padding: 0.4em .4em !important;
+    margin: 0;
+}
+
+.ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 400px;
+    vertical-align: bottom;
+
+}
