@@ -3,6 +3,8 @@ package com.evoting.controller;
 import com.evoting.entity.Users;
 import com.evoting.controller.util.JsfUtil;
 import com.evoting.controller.util.JsfUtil.PersistAction;
+import com.evoting.entity.Address;
+import com.evoting.entity.UserDetail;
 import com.evoting.facade.UsersFacade;
 
 import java.io.Serializable;
@@ -10,25 +12,32 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("usersController")
-@SessionScoped
-public class UsersController implements Serializable {
+@Named("userController")
+@ViewScoped
+public class UserController implements Serializable {
 
     @EJB
     private com.evoting.facade.UsersFacade ejbFacade;
     private List<Users> items = null;
     private Users selected;
 
-    public UsersController() {
+    public UserController() {
+    }
+
+    @PostConstruct
+    public void init() {
+        selected = new Users();
+        selected.setUserDetail(new UserDetail(new Address()));
     }
 
     public Users getSelected() {
@@ -129,7 +138,7 @@ public class UsersController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UsersController controller = (UsersController) facesContext.getApplication().getELResolver().
+            UserController controller = (UserController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "usersController");
             return controller.getUsers(getKey(value));
         }

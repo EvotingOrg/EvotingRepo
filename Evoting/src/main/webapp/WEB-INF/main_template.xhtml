@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
         <title><ui:insert name="title"></ui:insert></title>    
-        
+
         <!-- CSS FILES -->
         <h:outputStylesheet library="css" name="jsfcrud.css"/>        
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
@@ -28,7 +28,7 @@
                             <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
                         </div>
                         <div class="col-sm-6 col-xs-8">
-                           <div class="social">
+                            <div class="social">
                                 <ul class="social-share">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -40,13 +40,13 @@
                                         <input type="text" class="search-form" autocomplete="off" placeholder="Search"/>
                                         <i class="fa fa-search"></i>
                                     </form>
-                               </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div><!--/.container-->
             </div><!--/.top-bar-->
-            
+
             <nav class="navbar navbar-inverse" role="banner">
                 <div class="container">
                     <div class="navbar-header">
@@ -69,21 +69,25 @@
                             <li><a href="#" id="loginpopup">Login</a></li> 
                             <li><a href="#">Contact</a></li>
                             <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome Guest <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">My Account</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Logout</a></li>                                
-                            </ul>
-                        </li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome Guest <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">My Account</a></li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <h:form>
+                                            <h:commandLink action="#{logoutBean.logout}">Logout</h:commandLink> 
+                                        </h:form>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div><!--/.container-->
             </nav><!--/nav-->		
         </header><!--/header-->        
-       
+
         <ui:insert name="body"></ui:insert>       
-        
+
         <section id="bottom">
             <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                 <div class="row">
@@ -106,7 +110,7 @@
                             </ul>
                         </div>    
                     </div><!--/.col-md-3-->
-                    
+
                     <div class="col-md-3 col-sm-6">
                         <div class="widget">
                             <h3>Community</h3>
@@ -116,7 +120,7 @@
                             </ul>
                         </div>    
                     </div><!--/.col-md-3-->
-                    
+
                     <div class="col-md-3 col-sm-6">
                         <div class="widget">
                             <h3>Authority</h3>
@@ -129,7 +133,7 @@
                 </div>
             </div>
         </section><!--/#bottom-->
-        
+
         <footer id="footer" class="midnight-blue">
             <div class="container">
                 <div class="row">
@@ -147,7 +151,7 @@
                 </div>
             </div>
         </footer><!--/#footer-->
-        
+
         <!-- JAVASCRIPT FILES -->
         <h:outputScript library="js" name="jquery.js" />
         <h:outputScript library="js" name="bootstrap.min.js" />

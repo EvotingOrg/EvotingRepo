@@ -24,9 +24,16 @@ public class UserDetail extends AbstractLongPKEntity {
 
     @Column(name = "phone_no")
     private String phoneNo;
-    
+
     @Embedded
     private Address address;
+
+    public UserDetail() {
+    }
+
+    public UserDetail(Address address) {
+        this.address = address;
+    }
 
     public String getVoterId() {
         return voterId;

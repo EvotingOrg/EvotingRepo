@@ -44,6 +44,8 @@ public class Users extends AbstractLongPKEntity {
     @LazyCollection(LazyCollectionOption.TRUE)
     private Collection<UserPolling> userPollings;
 
+    private transient String confirmPassword;
+
     public String getUserName() {
         return userName;
     }
@@ -82,6 +84,14 @@ public class Users extends AbstractLongPKEntity {
 
     public void setUserPollings(Collection<UserPolling> userPollings) {
         this.userPollings = userPollings;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     @Override
