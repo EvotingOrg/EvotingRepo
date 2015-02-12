@@ -9,10 +9,12 @@
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
             <div class="modal-dialog" style="margin-top: 150px;">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel1">Login to Landing</h4>
-                    </div>
+                    <form>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel1">Login to Landing</h4>
+                        </div>
+                    </form>
 
                     <form method="POST" action="j_security_check">
                         <div class="modal-body" id="login_details">
@@ -29,7 +31,8 @@
                             <br/><br/>
                             <span> Not a member yet?</span>
                             <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>
-                            <p:commandButton value="Modal" type="button" onclick="login.hide();UsersCreateDlg.show();" />
+                            <p:commandButton value="Modal" type="button" onclick="login.hide();
+                                    UsersCreateDlg.show();" />
                         </div>
                     </form>
                 </div><!-- /.modal-content -->

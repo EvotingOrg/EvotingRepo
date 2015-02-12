@@ -7,10 +7,10 @@
     <ui:composition template="WEB-INF/main_template.xhtml">
         <ui:define name="title">Evoting | Home</ui:define>
         <ui:define name="body">
-            <ui:include src="/homePageContent.xhtml"/>          
+            <ui:include src="/homePageContent/homePageBody.xhtml"/>  
+            <ui:include src="/homePageContent/bottomContent.xhtml"/>    
             <ui:include src="/login.xhtml" />
-            <ui:include src="/signUp.xhtml"/>
-            <ui:include src="/bottomContent.xhtml"/>    
+            <ui:include src="/homePageContent/signUp.xhtml"/>
         </ui:define>
     </ui:composition>
 </html>

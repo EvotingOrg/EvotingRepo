@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <ui:composition>
 
-        <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsersTitle}">
+        <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false"  header="#{bundle.CreateUsersTitle}">
             <h:form id="UsersCreateForm">
                 <p:panelGrid columns="2" style="border-radius: 1px;"> 
                     <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
@@ -15,7 +15,6 @@
                     <p:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
                     <p:outputLabel value="Confirm Password" for="confirm_password"/>
                     <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}"/>
-
                     <p:outputLabel value="Voter Id" for="voterId"/>
                     <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}"/>
                     <p:outputLabel value="Phone No" for="phoneNo"/>
