@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsersTitle}">
+            <h:form id="UsersCreateForm">
+                <p:panelGrid columns="2" style="border-radius: 1px;"> 
+                    <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
+                    <p:inputText id="userName" value="#{usersController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
+                    <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
+                    <p:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
+                    <p:outputLabel value="Confirm Password" for="confirm_password"/>
+                    <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}"/>
+
+                    <p:outputLabel value="Voter Id" for="voterId"/>
+                    <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}"/>
+                    <p:outputLabel value="Phone No" for="phoneNo"/>
+                    <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}"/>
+                    <p:outputLabel value="State" for="state"/>
+                    <p:inputText id="state" value="#{userController.selected.userDetail.address.stateName}"/>
+                    <p:outputLabel value="City" for="city"/>
+                    <p:inputText id="city" value="#{userController.selected.userDetail.address.city}"/>
+                    <p:outputLabel value="Country" for="country"/>
+                    <p:inputText id="country" value="#{userController.selected.userDetail.address.country}"/>
+                </p:panelGrid>
+                <p:commandButton actionListener="#{usersController.create}" value="#{bundle.Save}"/>
+                <p:commandButton value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>

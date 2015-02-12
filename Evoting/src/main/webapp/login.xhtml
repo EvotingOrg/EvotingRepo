@@ -1,42 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>Login Form</title>
-    </h:head>
-    <h:body style="background-color: yellow;">
-        <h3>Welcome to the Login Page</h3>
-        <p><h:link outcome="/index" value="To Home Page" /></p>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+        <!-- Code for Login  -->
+        <!-- Modal Log in -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" style="margin-top: 150px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel1">Login to Landing</h4>
+                    </div>
 
-        <!--
-            The significant thing to understand about this form is that it
-            uses a mixture of regular HTML tags and JSF tags. Let's start
-            by discussing the HTML form tag. Notice it has an action attribute
-            that points to "j_security_check". This is a built-in servlet that
-            is part of every Java Web Application server, but never seen. It
-            handles authentication and authorization. Next notice that all 
-            input is handled by regular HTML input tags ... not by JSF input tags.
-            The reason for this is that we are not sending data to a JSF
-            Managed Bean, but rather to the servlet discussed above. Finally,
-            notice that even the submit button is a plain HTML input tag
-            instead of a JSF commandButton. Again, this is because we are
-            submitting the form to the servlet, not to a JSF bean. And the
-            names of the input tags must be exactly as indicated. No custom
-            names allowed! Also, please not that these comments would normally
-            cause a JSF page to not display correctly. See the web.xml which
-            has an entry that allows this.
-        -->
-        <form method="POST" action="j_security_check">
-            <h:panelGrid columns="2">
-                <h:outputLabel value="User Name"/>
-                <input type="text" name="j_username" />
-                <h:outputLabel value="Password"/>
-                <input type="password" name="j_password" />
-                <input type="submit" value="Login" />
-            </h:panelGrid>
-        </form> 
-
-    </h:body>
+                    <form method="POST" action="j_security_check">
+                        <div class="modal-body" id="login_details">
+                            <span> Already have an account? </span> <br/><br/>
+                            *<span style="font-weight:bold;">Your Email</span><br />
+                            <input type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
+                            *<span style="font-weight:bold;" >Password</span><br />
+                            <input type="password" placeholder="Password" name="j_password" /><br/>
+                            <!--for login set 2 things.jdbc realm and run sql file .see resource src/resource folder-->
+                        </div>
+                        <div class="modal-footer" >
+                            <input style="float: left" type="submit" class="btn btn-success" value="Login" />
+                            <span class="fp-link"> <a href="#">Forgot Password?</a></span>
+                            <br/><br/>
+                            <span> Not a member yet?</span>
+                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>
+                            <p:commandButton value="Modal" type="button" onclick="login.hide();UsersCreateDlg.show();" />
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </ui:composition>
 </html>
 
