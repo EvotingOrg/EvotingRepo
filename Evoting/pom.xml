@@ -63,11 +63,11 @@
             <version>1.6.4</version>
         </dependency>
         
-        <dependency>
+<!--        <dependency>
             <groupId>org.jboss.seam.faces</groupId>
             <artifactId>seam-faces</artifactId>
             <version>3.1.0.Beta3</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -102,11 +102,11 @@
             <version>3.0.0</version>
         </dependency>
        
-        <dependency>
+<!--        <dependency>
             <groupId>org.jboss.seam.international</groupId>
             <artifactId>seam-international</artifactId>
             <version>3.0.0.Alpha1</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

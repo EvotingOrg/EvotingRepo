@@ -8,8 +8,6 @@ package com.evoting.controller;
 import com.evoting.entity.AbstractLongPKEntity;
 import com.evoting.facade.AbstractFacade;
 import java.io.Serializable;
-import javax.inject.Inject;
-import org.jboss.seam.international.status.Messages;
 
 /**
  *
@@ -19,8 +17,8 @@ import org.jboss.seam.international.status.Messages;
 public abstract class AbstractViewController<T> implements Serializable {
 
     private Long idViewNavigate = 0l;
-    @Inject
-    protected Messages messages;
+    //@Inject
+    // protected Messages messages;
     private T current;
 
     public abstract AbstractFacade<T> getFacade();
@@ -56,10 +54,10 @@ public abstract class AbstractViewController<T> implements Serializable {
     public String update(AbstractLongPKEntity selected) {
         try {
             getFacade().edit((T) selected);
-            messages.info("Updated_Sucessfully");
+            // messages.info("Updated_Sucessfully");
             return "View?faces-redirect=true&id=" + selected.getId();
         } catch (Exception e) {
-            messages.error("Persistence Error Occured");
+            //  messages.error("Persistence Error Occured");
             return null;
         }
     }
