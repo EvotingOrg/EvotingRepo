@@ -22,7 +22,18 @@ public class LogoutBean implements Serializable {
     // 3rd party solution. Logging does what System.out.println() does and
     // more!
     private static Logger log = Logger.getLogger(LogoutBean.class.getName());
+    private boolean isAdmin = false;
 
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    
+    
     public String logout() {
         // Notice the redirect syntax. The forward slash means start at
         // the root of the web application.
@@ -34,9 +45,8 @@ public class LogoutBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request
                 = (HttpServletRequest) context.getExternalContext().getRequest();
-
+          
         try {
-            // added May 12, 2014
             HttpSession session = request.getSession();
             session.invalidate();
 
@@ -44,9 +54,10 @@ public class LogoutBean implements Serializable {
             request.logout();
         } catch (ServletException e) {
             log.log(Level.SEVERE, "Failed to logout user!", e);
-            destination = "/loginerror?faces-redirect=true";
+            destination = "../loginerror?faces-redirect=true";
         }
 
         return destination; // go to destination
     }
+
 }

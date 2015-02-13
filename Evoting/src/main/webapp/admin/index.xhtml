@@ -18,13 +18,13 @@
                                 </p>
                             </p>-->
             </ui:remove>
-            <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;" >
-                <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
-                    West
+            <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
+                <p:layoutUnit position="west" resizable="true" size="200" minSize="200" maxSize="200">
+                    <ui:include src="adminLinks.xhtml" rendered="#{logoutBean.isAdmin}"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Center
+                    <ui:insert name="ceneter"></ui:insert>
                 </p:layoutUnit>
             </p:layout>
         </ui:define>
