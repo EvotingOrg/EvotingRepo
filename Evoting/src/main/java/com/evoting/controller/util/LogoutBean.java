@@ -34,7 +34,8 @@ public class LogoutBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request
                 = (HttpServletRequest) context.getExternalContext().getRequest();
-
+        String s = request.getRemoteUser();
+        System.out.println("The remote user is :" + s);
         try {
             // added May 12, 2014
             HttpSession session = request.getSession();

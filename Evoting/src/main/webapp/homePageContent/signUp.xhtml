@@ -10,9 +10,9 @@
             <h:form id="UsersCreateForm">
                 <p:panelGrid columns="2" style="border-radius: 1px;"> 
                     <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
-                    <p:inputText id="userName" value="#{usersController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
+                    <p:inputText id="userName" value="#{userController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
                     <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
-                    <p:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
+                    <p:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
                     <p:outputLabel value="Confirm Password" for="confirm_password"/>
                     <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}"/>
                     <p:outputLabel value="Voter Id" for="voterId"/>
@@ -26,7 +26,7 @@
                     <p:outputLabel value="Country" for="country"/>
                     <p:inputText id="country" value="#{userController.selected.userDetail.address.country}"/>
                 </p:panelGrid>
-                <p:commandButton actionListener="#{usersController.create}" value="#{bundle.Save}"/>
+                <p:commandButton actionListener="#{userController.create}" value="#{bundle.Save}"/>
                 <p:commandButton value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
             </h:form>
         </p:dialog>

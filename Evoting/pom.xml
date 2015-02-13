@@ -101,6 +101,12 @@
             <artifactId>primefaces-extensions</artifactId>
             <version>3.0.0</version>
         </dependency>
+       
+        <dependency>
+            <groupId>org.jboss.seam.international</groupId>
+            <artifactId>seam-international</artifactId>
+            <version>3.0.0.Alpha1</version>
+        </dependency>
 
     </dependencies>
 
