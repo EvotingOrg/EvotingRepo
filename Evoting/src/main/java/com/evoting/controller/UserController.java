@@ -7,7 +7,6 @@ import com.evoting.entity.Address;
 import com.evoting.entity.UserDetail;
 import com.evoting.facade.UsersFacade;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -24,28 +23,19 @@ import javax.faces.convert.FacesConverter;
 
 @Named("userController")
 @ViewScoped
-public class UserController implements Serializable {
+public class UserController extends AbstractViewController<Users> {
 
     @EJB
     private com.evoting.facade.UsersFacade ejbFacade;
     private List<Users> items = null;
-    private Users selected;
 
     public UserController() {
     }
 
     @PostConstruct
     public void init() {
-        selected = new Users();
-        selected.setUserDetail(new UserDetail(new Address()));
-    }
-
-    public Users getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Users selected) {
-        this.selected = selected;
+        setSelected(new Users());
+        getSelected().setUserDetail(new UserDetail(new Address()));
     }
 
     protected void setEmbeddableKeys() {
@@ -54,14 +44,15 @@ public class UserController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private UsersFacade getFacade() {
+    @Override
+    public UsersFacade getFacade() {
         return ejbFacade;
     }
 
     public Users prepareCreate() {
-        selected = new Users();
+        setSelected(new Users());
         initializeEmbeddableKey();
-        return selected;
+        return getSelected();
     }
 
     public void create() {
@@ -78,7 +69,7 @@ public class UserController implements Serializable {
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("UsersDeleted"));
         if (!JsfUtil.isValidationFailed()) {
-            selected = null; // Remove selection
+            setSelected(null); // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
@@ -91,13 +82,13 @@ public class UserController implements Serializable {
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
-        if (selected != null) {
+        if (getSelected() != null) {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    getFacade().edit(getSelected());
                 } else {
-                    getFacade().remove(selected);
+                    getFacade().remove(getSelected());
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {

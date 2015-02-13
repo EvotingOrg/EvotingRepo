@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.evoting.facade;
 
 import java.util.List;
@@ -12,8 +11,10 @@ import javax.persistence.EntityManager;
 /**
  *
  * @author Rajesh Yadav <developerrajeshyadav@gmail.com>
+ * @param <T>
  */
 public abstract class AbstractFacade<T> {
+
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
