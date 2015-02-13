@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 12, 2015, 9:26:35 PM
+    Author     : HSA
+*/
+
+.main_buttons{
+    background-color: #222;
+    color: #fff;
+    border-color: #222;
+    
+    background: none;
+    border: none;
+    display: block;
+    font: inherit;
+    //margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    outline: none;
+    //outline-offset: 0;
+    /* Additional styles to look like a link */
+    cursor: pointer;
+}
+
+.main_buttons:hover{
+    background-color: #c52d2f;
+    color: #fff;
+    border-radius: 2px;
+    
+}
