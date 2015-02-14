@@ -12,13 +12,15 @@
             <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
                 <p:layoutUnit position="west" resizable="true" size="200" minSize="200" maxSize="200">
                     <ui:include src="adminLinks.xhtml" rendered="#{logoutBean.isAdmin}"/>
-                    <h:form>
-                        <h:commandLink action="#{logoutBean.logout}" value="Logout" />
-                    </h:form>
+                    <ui:include src="userLinks.xhtml" rendered="#{not logoutBean.isAdmin}"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <ui:insert name="ceneter"></ui:insert>
+                    <ui:insert name="ceneter">
+                        <ui:remove>
+                            <ui:include src="#{uiHandler.selectedAdminPage}"/>
+                        </ui:remove>
+                    </ui:insert>
                 </p:layoutUnit>
             </p:layout>
 
