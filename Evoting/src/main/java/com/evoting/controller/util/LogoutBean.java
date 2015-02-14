@@ -59,7 +59,11 @@ public class LogoutBean implements Serializable {
     }
 
     public String getLoggedInUser() {
-        return ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRemoteUser();
+        String loggedUser = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRemoteUser();
+        if(null == loggedUser) {
+            return "Guest";
+        }
+        return loggedUser;
     }
 
     public String logout() {
