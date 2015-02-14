@@ -17,7 +17,9 @@
                 <p:layoutUnit position="center">
                     <ui:insert name="ceneter">
                         <ui:include src="#{uiHandlerBean.selectedAdminPage}"/>
-                        <ui:include src="candidate/List.xhtml"/>
+                        <ui:remove>
+                            <ui:include src="candidate/List.xhtml"/>
+                        </ui:remove>
                     </ui:insert>
                 </p:layoutUnit>
             </p:layout>

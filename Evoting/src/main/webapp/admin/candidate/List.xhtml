@@ -25,12 +25,12 @@
                              rowKey="#{item.id}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"
-
                              >
 
                     <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton
-                             :CandidateListForm:createSrc viewSrc editSrc"/>
-                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            "/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton
+                            "/>
 
                     <p:column>
                         <f:facet name="header">
@@ -53,17 +53,16 @@
                     <f:facet name="footer">
                         <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{candidateController.prepareCreate}" update=":CandidateCreateForm" oncomplete="PF('CandidateCreateDialog').show()"/>
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CandidateViewForm" oncomplete="PF('CandidateViewDialog').show()" disabled="#{empty candidateController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CandidateViewForm" oncomplete="PF('CandidateEditDialog').show()" disabled="#{empty candidateController.selected}" />
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CandidateEditForm" oncomplete="PF('CandidateEditDialog').show()" disabled="#{empty candidateController.selected}" />
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{candidateController.destroy}" update=":growl,datalist" disabled="#{empty candidateController.selected}" />
                     </f:facet>
                 </p:dataTable>
             </p:panel>
         </h:form>
 
-        <ui:include id="createSrc" src="Create.xhtml"/>
-        <ui:include id="editSrc" src="Edit.xhtml"/>
-        <ui:include id="viewSrc" src="View.xhtml"/>
-        <!--        </ui:define>-->
+        <ui:include  src="Create.xhtml"/>
+        <ui:include  src="Edit.xhtml"/>
+        <ui:include  src="View.xhtml"/>
     </ui:composition>
 
 </html>

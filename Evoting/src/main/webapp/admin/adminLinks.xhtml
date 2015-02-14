@@ -7,22 +7,30 @@
 
     <ui:composition>
         <h:form>
-            <p:commandButton value="Candidate List" update="@form"
+            <p:commandButton value="Show All Candidate Items" update="@form"    
                              action="#{uiHandlerBean.setSelectedAdminPage('candidate/List.xhtml')}"/>
-            <h:link outcome="candidate/List.xhtml" value="Show All Candidate Items"/>
             <br />
-            <h:link outcome="category/List" value="Show All Category Items"/>
+            <p:commandButton value="Show All Category Items" update="@form"  
+                             action="#{uiHandlerBean.setSelectedAdminPage('category/List.xhtml')}"/>
+            <br/>
+            <p:commandButton value="Show All Election List" update="@form" 
+                             action="#{uiHandlerBean.setSelectedAdminPage('election/List.xhtml')}"/>
             <br />
-            <h:link outcome="election/List" value="Show All Election Items"/>
+            <p:commandButton value="Show All Election Candidate" update="@form"
+                             action="#{uiHandlerBean.setSelectedAdminPage('electionCandidate/List.xhtml')}"/>
             <br />
-            <h:link outcome="electionCandidate/List" value="Show All ElectionCandidate Items"/>
+            <p:commandButton value="Show All groups" update="@form" 
+                             action="#{uiHandlerBean.setSelectedAdminPage('groups/List.xhtml')}"/>
             <br />
-            <h:link outcome="poll/List" value="Show All Poll Items"/>
+            <p:commandButton value="Show All Polls" update="@form" 
+                             action="#{uiHandlerBean.setSelectedAdminPage('poll/List/xhtml')}"/>
             <br />
-            <h:link outcome="pollOptions/List" value="Show All PollOptions Items"/>
+            <p:commandButton value="Show All PollOptions" update="@form" 
+                             action="#{uiHandlerBean.setSelectedAdminPage('pollOption/List.xhtml')}"/>
             <br />
-            <h:link outcome="product/List" value="Show All Product Items"/>
-            <br />
+            <p:commandButton value="Show All Products" update="@form" 
+                             action="#{uiHandlerBean.setSelectedAdminPage('product/List.xhtml')}"/>
+
         </h:form>
     </ui:composition>
 

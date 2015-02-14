@@ -27,7 +27,7 @@
                         <p:outputLabel value="#{bundle.CreateProductLabel_id}" for="id" />
                         <p:inputText id="id" value="#{productController.selected.id}" title="#{bundle.CreateProductTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{productController.create}" value="#{bundle.Save}" update="display,:ProductListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductCreateDialog');"/>
+                    <p:commandButton actionListener="#{productController.create}" value="#{bundle.Save}" update="ProductCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ProductCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

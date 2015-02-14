@@ -8,7 +8,8 @@
 
     <ui:composition>
 
-        <p:dialog id="CategoryEditDlg" widgetVar="CategoryEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCategoryTitle}">
+        <p:dialog id="CategoryEditDlg" widgetVar="CategoryEditDialog" modal="true" dynamic="true"
+                  resizable="false" appendTo="@(body)" header="#{bundle.EditCategoryTitle}">
             <h:form id="CategoryEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{categoryController.selected != null}">
@@ -17,7 +18,7 @@
                         <p:outputLabel value="#{bundle.EditCategoryLabel_id}" for="id" />
                         <p:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.EditCategoryTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{categoryController.update}" value="#{bundle.Save}" update="display,:CategoryListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CategoryEditDialog');"/>
+                    <p:commandButton actionListener="#{categoryController.update}" value="#{bundle.Save}" update="display,:CategoryListForm:datalist,@form" oncomplete="CategoryEditDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="CategoryEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

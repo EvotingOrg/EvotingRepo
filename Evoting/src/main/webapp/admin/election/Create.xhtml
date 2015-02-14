@@ -23,7 +23,7 @@
                         <p:outputLabel value="#{bundle.CreateElectionLabel_id}" for="id" />
                         <p:inputText id="id" value="#{electionController.selected.id}" title="#{bundle.CreateElectionTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{electionController.create}" value="#{bundle.Save}" update="display,:ElectionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ElectionCreateDialog');"/>
+                    <p:commandButton actionListener="#{electionController.create}" value="#{bundle.Save}" update="display,:ElectionListForm:datalist,:growl" oncomplete="ElectionCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

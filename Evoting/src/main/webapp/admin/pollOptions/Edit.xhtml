@@ -28,7 +28,7 @@
                         <p:outputLabel value="#{bundle.EditPollOptionsLabel_id}" for="id" />
                         <p:inputText id="id" value="#{pollOptionsController.selected.id}" title="#{bundle.EditPollOptionsTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{pollOptionsController.update}" value="#{bundle.Save}" update="display,:PollOptionsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PollOptionsEditDialog');"/>
+                    <p:commandButton actionListener="#{pollOptionsController.update}" value="#{bundle.Save}" update="display,:PollOptionsListForm:datalist,:growl,@form" oncomplete="PollOptionsEditDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PollOptionsEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

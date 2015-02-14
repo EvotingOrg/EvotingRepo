@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+     <ui:composition>
 
 
         <ui:define name="title">
@@ -18,7 +18,7 @@
                 <p:panel header="#{bundle.ListGroupsTitle}">
                     <p:dataTable id="datalist" value="#{groupsController.items}" var="item"
                                  selectionMode="single" selection="#{groupsController.selected}"
-                                 paginator="true"
+                                 paginator="true" lazy="true"
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"

@@ -37,7 +37,7 @@
                         <p:outputLabel value="#{bundle.EditElectionCandidateLabel_id}" for="id" />
                         <p:inputText id="id" value="#{electionCandidateController.selected.id}" title="#{bundle.EditElectionCandidateTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{electionCandidateController.update}" value="#{bundle.Save}" update="display,:ElectionCandidateListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ElectionCandidateEditDialog');"/>
+                    <p:commandButton actionListener="#{electionCandidateController.update}" value="#{bundle.Save}" update="display,:ElectionCandidateListForm:datalist,:growl,@form" oncomplete="ElectionCandidateEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionCandidateEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
