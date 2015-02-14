@@ -12,11 +12,18 @@ package com.evoting.enums;
 public enum RoleTypeEnum {
 
     Admin("admin"),
-    Member("member");
+    User("user");
 
     private String role;
 
-    
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     RoleTypeEnum(String role) {
         this.role = role;
     }

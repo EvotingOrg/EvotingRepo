@@ -1,11 +1,18 @@
 package com.evoting.controller.util;
 
+import com.evoting.entity.Groups;
+import com.evoting.enums.RoleTypeEnum;
+import com.evoting.facade.GroupsFacade;
+import com.evoting.facade.UsersFacade;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.security.auth.Subject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,22 +25,43 @@ import javax.servlet.http.HttpSession;
 @SessionScoped
 public class LogoutBean implements Serializable {
 
-    // Built in logging is used now, but will be replaced in future with
-    // 3rd party solution. Logging does what System.out.println() does and
-    // more!
+    @Inject
+    private UsersFacade userFacade;
+    @Inject
+    private GroupsFacade groupFacade;
     private static Logger log = Logger.getLogger(LogoutBean.class.getName());
-    private boolean isAdmin = false;
+    private RoleTypeEnum userRole;
 
-    public boolean isIsAdmin() {
-        return isAdmin;
+    public RoleTypeEnum getUserRole() {
+        return userRole;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setUserRole(RoleTypeEnum userRole) {
+        this.userRole = userRole;
     }
 
-    
-    
+    public boolean isAdmin() {
+        if (userRole == null) {
+            HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            Groups group = groupFacade.findByUserName(request.getRemoteUser());
+            setUserRole(RoleTypeEnum.valueOf(group.getGroupName()));
+            return userRole.equals(userRole.Admin);
+        } else if (userRole.equals(RoleTypeEnum.Admin)) {
+            return true;
+        } else if (userRole.equals(RoleTypeEnum.User)) {
+            return false;
+        }
+        return false;
+    }
+
+    public boolean isLoggedIn() {
+        return ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRemoteUser() == null ? true : false;
+    }
+
+    public String getLoggedInUser() {
+        return ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRemoteUser();
+    }
+
     public String logout() {
         // Notice the redirect syntax. The forward slash means start at
         // the root of the web application.
@@ -45,11 +73,10 @@ public class LogoutBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request
                 = (HttpServletRequest) context.getExternalContext().getRequest();
-          
         try {
             HttpSession session = request.getSession();
             session.invalidate();
-
+            setUserRole(null);
             // this does not invalidate the session but does null out the user Principle
             request.logout();
         } catch (ServletException e) {

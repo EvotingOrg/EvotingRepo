@@ -8,6 +8,20 @@
     <ui:composition template="../WEB-INF/main_template.xhtml">
         <ui:define name="title">Welcome to the Admin Home Page</ui:define>
         <ui:define name="body">
+
+            <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
+                <p:layoutUnit position="west" resizable="true" size="200" minSize="200" maxSize="200">
+                    <ui:include src="adminLinks.xhtml" rendered="#{logoutBean.isAdmin}"/>
+                    <h:form>
+                        <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="ceneter"></ui:insert>
+                </p:layoutUnit>
+            </p:layout>
+
             <ui:remove>
                 <!--            <p style="background-color: red">
                                 <p><h:link outcome="/index" value="To Home Page" /></p>
@@ -18,15 +32,6 @@
                                 </p>
                             </p>-->
             </ui:remove>
-            <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
-                <p:layoutUnit position="west" resizable="true" size="200" minSize="200" maxSize="200">
-                    <ui:include src="adminLinks.xhtml" rendered="#{logoutBean.isAdmin}"/>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    <ui:insert name="ceneter"></ui:insert>
-                </p:layoutUnit>
-            </p:layout>
         </ui:define>
     </ui:composition>
 </html>
