@@ -46,16 +46,16 @@
                         <div class="collapse navbar-collapse navbar-right">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">About Us</a></li>                            
+                                <li><h:commandButton class="main_buttons" value="About Us"  immediate="true"/></li>                            
                                 <!--                                <li><a jsfc="h:commandLink" >Voting</a></li>-->
-                                <li><h:commandButton class="main_buttons" type="button" value="Voting" onclick="UsersCreateDialog.show();" immediate="true"/></li>
-                                <li><a href="#">Polling</a></li>
-                                <li><a href="#">Rating</a></li>
+                                <li><h:commandButton class="main_buttons" value="Voting"  immediate="true"/></li>
+                                <li><h:commandButton class="main_buttons" value="Polling" immediate="true"/></li>
+                                <li><h:commandButton class="main_buttons" value="Rating"  immediate="true"/></li>
                                 <ui:fragment rendered="#{logoutBean.isLoggedIn()}">
                                     <li><h:commandButton value="Login" class="loginpopup main_buttons" type="button"/></li> 
                                     <li><h:commandButton value="Signup" class="main_buttons" type="button" onclick="UsersCreateDialog.show();"/></li>
                                 </ui:fragment>
-                                <li><a href="#">Contact</a></li>
+                                <li><h:commandButton class="main_buttons" value="Contact"  immediate="true"/></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <h:outputText value="#{logoutBean.getLoggedInUser()}"/> <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu">
