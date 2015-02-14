@@ -19,7 +19,7 @@
                         <p:outputLabel value="#{bundle.EditCandidateLabel_id}" for="id" />
                         <p:inputText id="id" value="#{candidateController.selected.id}" title="#{bundle.EditCandidateTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{candidateController.update}" value="#{bundle.Save}" update="display,:CandidateListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CandidateEditDialog');"/>
+                    <p:commandButton actionListener="#{candidateController.update}" value="#{bundle.Save}" update="display,:CandidateListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CandidateEditDialog');" ajax="false"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="CandidateEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
