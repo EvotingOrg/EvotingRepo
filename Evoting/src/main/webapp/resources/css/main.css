@@ -2531,8 +2531,7 @@ shortcodes page css
   padding: 70px 0;
 }
 
-
-
-
-
-
+.btn_logout {
+    width:100%;
+    text-align: left;
+}
