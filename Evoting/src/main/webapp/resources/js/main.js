@@ -68,7 +68,7 @@ jQuery(function($) {'use strict',
 		social_tools: false
 	});
         
-        $("#loginpopup").bind("click", function() {
+        $(".loginpopup").bind("click", function() {
 		$('#login').modal('toggle');
 	});
 	
@@ -76,8 +76,19 @@ jQuery(function($) {'use strict',
            $('#login').modal('hide');
             $('#signup').modal('toggle');
         });
+        
         $('#login-link').bind("click", function() {
            $('#signup').modal('hide');
             $('#login').modal('toggle');
+        });
+        
+        $('#logout_buffer').bind("click", function() {
+            //$("#btn_logout").click();
+            //alert('logout');
+            $("#btn_logout").trigger("click");
+        });
+        
+        $('#btn_logout').bind("click", function() {
+            alert('clicked');
         });
 });
