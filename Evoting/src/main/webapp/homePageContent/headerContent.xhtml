@@ -43,7 +43,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="#"><img src="#{resource['images/logo.png']}" alt="logo"/></a>
-                        </div><div class="caption"><h:outputText value="#{logoutBean.getLoggedInUser()}"/></div>
+                        </div>                       
 
                         <div class="collapse navbar-collapse navbar-right">
                             <ul class="nav navbar-nav">
@@ -58,7 +58,7 @@
 
                                 <li><a href="#">Contact</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome Guest <i class="fa fa-angle-down"></i></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <h:outputText value="#{logoutBean.getLoggedInUser()}"/> <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">My Account</a></li>
                                         <li class="divider"></li>
