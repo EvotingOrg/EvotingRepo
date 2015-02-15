@@ -2,22 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
         <!-- Code for Login  -->
         <!-- Modal Log in -->
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-            <div class="modal-dialog" style="margin-top: 150px;">
+            <div class="modal-dialog" style="margin-top: 150px; width:20%;">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel1">Login to Landing</h4>
+                            <h4 class="modal-title" id="myModalLabel1">Login to your account</h4>
                         </div>
                     </form>
 
                     <form method="POST" action="j_security_check">
-                        <div class="modal-body" id="login_details">
+                        <div style="position: relative; left: 8%" class="modal-body" id="login_details">
                             <span> Already have an account? </span> <br/><br/>
                             *<span style="font-weight:bold;">Your Email</span><br />
                             <input type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
@@ -26,13 +27,14 @@
                             <!--for login set 2 things.jdbc realm and run sql file .see resource src/resource folder-->
                         </div>
                         <div class="modal-footer" >
-                            <input style="float: left" type="submit" class="btn btn-success" value="Login" />
-                            <span class="fp-link"> <a href="#">Forgot Password?</a></span>
+                            <input style="position:relative;left:-36%" type="submit" class="btn btn-success" value="Login" />
+<!--                            <span class="fp-link"> <a href="#">Forgot Password?</a></span>
                             <br/><br/>
-                            <span> Not a member yet?</span>
-                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>
-                            <p:commandButton value="Modal" type="button" onclick="login.hide();
-                                    UsersCreateDlg.show();" />
+                            <span> Not a member yet?</span>-->
+                            <!--                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
+
+<!--                            <h:form><p:commandButton value="Sign Up"/></h:form>-->
+
                         </div>
                     </form>
                 </div><!-- /.modal-content -->

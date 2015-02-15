@@ -26,9 +26,10 @@
                     <p:outputLabel value="Country" for="country"/>
                     <p:inputText id="country" value="#{userController.selected.userDetail.address.country}"/>
                 </p:panelGrid>
-                <p:commandButton actionListener="#{userController.create}" value="#{bundle.Save}"/>
-                <p:commandButton value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
+                <p:commandButton id="savebtn" actionListener="#{userController.create}" value="#{bundle.Save}"/>
+                <p:commandButton id="cancelbtn" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
             </h:form>
         </p:dialog>
+
     </ui:composition>
 </html>
