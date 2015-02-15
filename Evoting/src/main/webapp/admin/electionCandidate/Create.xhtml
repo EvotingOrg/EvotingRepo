@@ -32,8 +32,10 @@
                         <p:inputText id="post" value="#{electionCandidateController.selected.post}" title="#{bundle.CreateElectionCandidateTitle_post}" />
                         <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_rankObtd}" for="rankObtd" />
                         <p:inputText id="rankObtd" value="#{electionCandidateController.selected.rankObtd}" title="#{bundle.CreateElectionCandidateTitle_rankObtd}" />
-                        <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{electionCandidateController.selected.id}" title="#{bundle.CreateElectionCandidateTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{electionCandidateController.selected.id}" title="#{bundle.CreateElectionCandidateTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{electionCandidateController.create}" value="#{bundle.Save}" update="ElectionCandidateCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionCandidateCreateDialog.hide()"/>

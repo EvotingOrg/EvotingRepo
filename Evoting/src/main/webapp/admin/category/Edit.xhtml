@@ -15,8 +15,10 @@
                     <p:panelGrid columns="2" rendered="#{categoryController.selected != null}">
                         <p:outputLabel value="#{bundle.EditCategoryLabel_category}" for="category" />
                         <p:inputText id="category" value="#{categoryController.selected.category}" title="#{bundle.EditCategoryTitle_category}" />
-                        <p:outputLabel value="#{bundle.EditCategoryLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.EditCategoryTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditCategoryLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.EditCategoryTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{categoryController.update}" value="#{bundle.Save}" update="display,:CategoryListForm:datalist,@form" oncomplete="CategoryEditDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="CategoryEditDialog.hide()"/>

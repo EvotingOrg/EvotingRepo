@@ -16,8 +16,10 @@
                         <p:inputText id="userName" value="#{groupsController.selected.userName}" title="#{bundle.CreateGroupsTitle_userName}" />
                         <p:outputLabel value="#{bundle.CreateGroupsLabel_groupName}" for="groupName" />
                         <p:inputText id="groupName" value="#{groupsController.selected.groupName}" title="#{bundle.CreateGroupsTitle_groupName}" />
-                        <p:outputLabel value="#{bundle.CreateGroupsLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{groupsController.selected.id}" title="#{bundle.CreateGroupsTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreateGroupsLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{groupsController.selected.id}" title="#{bundle.CreateGroupsTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{groupsController.create}" value="#{bundle.Save}" update="display,:GroupsListForm:datalist,:growl" oncomplete="GroupsCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="GroupsCreateDialog.hide()"/>

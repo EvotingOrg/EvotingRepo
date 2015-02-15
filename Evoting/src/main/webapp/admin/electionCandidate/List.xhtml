@@ -9,11 +9,6 @@
      <ui:composition>
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListElectionCandidateTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
             <h:form id="ElectionCandidateListForm">
                 <p:panel header="#{bundle.ListElectionCandidateTitle}">
                     <p:dataTable id="datalist" value="#{electionCandidateController.items}" var="item"
@@ -82,7 +77,6 @@
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
-        </ui:define>
     </ui:composition>
 
 </html>
