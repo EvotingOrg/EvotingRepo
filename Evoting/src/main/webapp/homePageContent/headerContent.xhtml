@@ -40,14 +40,13 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img src="#{resource['images/logo.png']}" alt="logo"/></a>
+                            <a class="navbar-brand" href="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml"><img src="#{resource['images/logo.png']}" alt="logo"/></a>
                         </div>                       
 
                         <div class="collapse navbar-collapse navbar-right">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><h:commandButton class="main_buttons" value="About Us"  immediate="true"/></li>                            
-                                <!--                                <li><a jsfc="h:commandLink" >Voting</a></li>-->
+                                <li class="active"><h:commandButton class="main_buttons" value="Home"  immediate="true" action="index.xhtml"/></li>
+                                <li><h:commandButton class="main_buttons" value="About Us"  immediate="true" action="about-us.xhtml"/></li>
                                 <li><h:commandButton class="main_buttons" value="Voting"  immediate="true"/></li>
                                 <li><h:commandButton class="main_buttons" value="Polling" immediate="true"/></li>
                                 <li><h:commandButton class="main_buttons" value="Rating"  immediate="true"/></li>
@@ -55,7 +54,7 @@
                                     <li><h:commandButton value="Login" class="loginpopup main_buttons" type="button"/></li> 
                                     <li><h:commandButton value="Signup" class="main_buttons" type="button" onclick="UsersCreateDialog.show();"/></li>
                                 </ui:fragment>
-                                <li><h:commandButton class="main_buttons" value="Contact"  immediate="true"/></li>
+                                <li><h:commandButton class="main_buttons" value="Contact"  immediate="true" action="contact.xhtml"/></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <h:outputText value="#{logoutBean.getLoggedInUser()}"/> <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu">

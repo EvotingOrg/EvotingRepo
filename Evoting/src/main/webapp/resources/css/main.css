@@ -1186,6 +1186,7 @@ a.accordion-toggle  i{
   border: 1px solid #ddd;
   padding: 15px;
   position: relative;
+  margin: 0 auto;
 }
 
 .media_image {
@@ -1890,7 +1891,7 @@ ul.social_icons li  a i{
 **************************/
 
 .gmap-area {
-  background-image: url("../images/map.jpg");
+  background-image: url("../resources/images/map.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
