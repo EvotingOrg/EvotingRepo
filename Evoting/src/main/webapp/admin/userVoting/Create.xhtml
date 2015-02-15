@@ -8,31 +8,31 @@
 
     <ui:composition>
 
-        <p:dialog id="UserVotingEditDlg" widgetVar="UserVotingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUserVotingTitle}">
-            <h:form id="UserVotingEditForm">
+        <p:dialog id="UserVotingCreateDlg" widgetVar="UserVotingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUserVotingTitle}">
+            <h:form id="UserVotingCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{userVotingController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditUserVotingLabel_userId}" for="userId" />
+                        <p:outputLabel value="#{bundle.CreateUserVotingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userVotingController.selected.userId}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditUserVotingLabel_electionCandidateId}" for="electionCandidateId" />
+                        <p:outputLabel value="#{bundle.CreateUserVotingLabel_electionCandidateId}" for="electionCandidateId" />
                         <p:selectOneMenu id="electionCandidateId" value="#{userVotingController.selected.electionCandidateId}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{electionCandidateController.itemsAvailableSelectOne}"
                                            var="electionCandidateIdItem"
                                            itemValue="#{electionCandidateIdItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditUserVotingLabel_voteCastedTime}" for="voteCastedTime" />
+                        <p:outputLabel value="#{bundle.CreateUserVotingLabel_voteCastedTime}" for="voteCastedTime" />
                         <p:calendar id="voteCastedTime" pattern="MM/dd/yyyy" value="#{userVotingController.selected.voteCastedTime}" title="#{bundle.EditUserVotingTitle_voteCastedTime}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditUserVotingLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userVotingController.selected.id}" title="#{bundle.EditUserVotingTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreateUserVotingLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{userVotingController.selected.id}" title="#{bundle.CreateUserVotingTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userVotingController.update}" value="#{bundle.Save}" update="display,:UserVotingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UserVotingEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="UserVotingEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{userVotingController.create}" value="#{bundle.Save}" update="UserVotingCreateDialog.hide();"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UserVotingCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

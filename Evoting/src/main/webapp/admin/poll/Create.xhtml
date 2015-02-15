@@ -22,8 +22,10 @@
                         <p:calendar id="toDate" pattern="MM/dd/yyyy" value="#{pollController.selected.toDate}" title="#{bundle.EditPollTitle_toDate}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreatePollLabel_result}" for="result" />
                         <p:inputText id="result" value="#{pollController.selected.result}" title="#{bundle.CreatePollTitle_result}" />
-                        <p:outputLabel value="#{bundle.CreatePollLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{pollController.selected.id}" title="#{bundle.CreatePollTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreatePollLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{pollController.selected.id}" title="#{bundle.CreatePollTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pollController.create}" value="#{bundle.Save}" update="PollCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PollCreateDialog.hide()"/>

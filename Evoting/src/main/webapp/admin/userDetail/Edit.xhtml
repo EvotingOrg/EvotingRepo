@@ -18,10 +18,12 @@
                         <p:inputText id="phoneNo" value="#{userDetailController.selected.phoneNo}" title="#{bundle.EditUserDetailTitle_phoneNo}" />
                         <p:outputLabel value="#{bundle.EditUserDetailLabel_address}" for="address" />
                         <p:inputText id="address" value="#{userDetailController.selected.address}" title="#{bundle.EditUserDetailTitle_address}" />
-                        <p:outputLabel value="#{bundle.EditUserDetailLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.EditUserDetailTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditUserDetailLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.EditUserDetailTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userDetailController.update}" value="#{bundle.Save}" update="display,:UserDetailListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UserDetailEditDialog');"/>
+                    <p:commandButton actionListener="#{userDetailController.update}" value="#{bundle.Save}" update="display,:UserDetailListForm:datalist,:growl" oncomplete="UserDetailEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserDetailEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

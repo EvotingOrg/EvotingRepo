@@ -8,35 +8,40 @@
 
     <ui:composition>
 
-        <p:dialog id="UserPollingCreateDlg" widgetVar="UserPollingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUserPollingTitle}">
-            <h:form id="UserPollingCreateForm">
+        <p:dialog id="UserPollingEditDlg" widgetVar="UserPollingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUserPollingTitle}">
+            <h:form id="UserPollingEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{userPollingController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateUserPollingLabel_userId}" for="userId" />
+                        <p:outputLabel value="#{bundle.EditUserPollingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userPollingController.selected.userId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateUserPollingLabel_pollOptionId}" for="pollOptionId" />
+                        <p:outputLabel value="#{bundle.EditUserPollingLabel_pollOptionId}" for="pollOptionId" />
                         <p:selectOneMenu id="pollOptionId" value="#{userPollingController.selected.pollOptionId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{pollOptionsController.itemsAvailableSelectOne}"
                                            var="pollOptionIdItem"
                                            itemValue="#{pollOptionIdItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateUserPollingLabel_pollId}" for="pollId" />
+                        <p:outputLabel value="#{bundle.EditUserPollingLabel_pollId}" for="pollId" />
                         <p:selectOneMenu id="pollId" value="#{userPollingController.selected.pollId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{pollController.itemsAvailableSelectOne}"
                                            var="pollIdItem"
                                            itemValue="#{pollIdItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateUserPollingLabel_pollingTime}" for="pollingTime" />
+                        <p:outputLabel value="#{bundle.EditUserPollingLabel_pollingTime}" for="pollingTime" />
                         <p:calendar id="pollingTime" pattern="MM/dd/yyyy" value="#{userPollingController.selected.pollingTime}" title="#{bundle.EditUserPollingTitle_pollingTime}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateUserPollingLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userPollingController.selected.id}" title="#{bundle.CreateUserPollingTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditUserPollingLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{userPollingController.selected.id}" title="#{bundle.EditUserPollingTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userPollingController.create}" value="#{bundle.Save}" update="display,:UserPollingListForm:datalist,:growl" oncomplete="handleSubmit(args,'UserPollingCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="UserPollingCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{userPollingController.update}" value="#{bundle.Save}" update="UserPollingEditDialog.hide();"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UserPollingEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

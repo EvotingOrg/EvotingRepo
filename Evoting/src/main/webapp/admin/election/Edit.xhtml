@@ -20,8 +20,10 @@
                         <p:calendar id="fromDate" pattern="MM/dd/yyyy" value="#{electionController.selected.fromDate}" title="#{bundle.EditElectionTitle_fromDate}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditElectionLabel_toDate}" for="toDate" />
                         <p:calendar id="toDate" pattern="MM/dd/yyyy" value="#{electionController.selected.toDate}" title="#{bundle.EditElectionTitle_toDate}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditElectionLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{electionController.selected.id}" title="#{bundle.EditElectionTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditElectionLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{electionController.selected.id}" title="#{bundle.EditElectionTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{electionController.update}" value="#{bundle.Save}" update="display,:ElectionListForm:datalist,:growl,@form" oncomplete="ElectionEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionEditDialog.hide()"/>

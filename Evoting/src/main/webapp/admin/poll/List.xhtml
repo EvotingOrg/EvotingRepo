@@ -8,12 +8,6 @@
 
      <ui:composition>
 
-
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListPollTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
             <h:form id="PollListForm">
                 <p:panel header="#{bundle.ListPollTitle}">
                     <p:dataTable id="datalist" value="#{pollController.items}" var="item"
@@ -80,7 +74,6 @@
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
-        </ui:define>
     </ui:composition>
 
 </html>

@@ -16,7 +16,30 @@
 
                 <p:layoutUnit position="center">
                     <ui:insert name="ceneter">
-                        <ui:include src="#{uiHandlerBean.selectedAdminPage}"/>
+                        <h:panelGroup id="ui">
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'candidate/List.xhtml'}">
+                                <ui:include src="candidate/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'category/List.xhtml'}">
+                                <ui:include src="category/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'election/List.xhtml'}">
+                                <ui:include src="election/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'electionCandidate/List.xhtml'}">
+                                <ui:include src="electionCandidate/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'groups/List.xhtml'}">
+                                <ui:include src="groups/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'pollOptions/List.xhtml'}">
+                                <ui:include src="pollOptions/List.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'product/List.xhtml'}">
+                                <ui:include src="product/List.xhtml"/>
+                            </ui:fragment>
+                        </h:panelGroup>
+
                         <ui:remove>
                             <ui:include src="candidate/List.xhtml"/>
                         </ui:remove>

@@ -24,8 +24,10 @@
                         <p:calendar id="distributionDate" pattern="MM/dd/yyyy" value="#{productController.selected.distributionDate}" title="#{bundle.EditProductTitle_distributionDate}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateProductLabel_avgRating}" for="avgRating" />
                         <p:inputText id="avgRating" value="#{productController.selected.avgRating}" title="#{bundle.CreateProductTitle_avgRating}" />
-                        <p:outputLabel value="#{bundle.CreateProductLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{productController.selected.id}" title="#{bundle.CreateProductTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreateProductLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{productController.selected.id}" title="#{bundle.CreateProductTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{productController.create}" value="#{bundle.Save}" update="ProductCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ProductCreateDialog.hide()"/>

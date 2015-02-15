@@ -30,10 +30,12 @@
                         <p:calendar id="dateRated" pattern="MM/dd/yyyy" value="#{userRatingController.selected.dateRated}" title="#{bundle.EditUserRatingTitle_dateRated}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditUserRatingLabel_rating}" for="rating" />
                         <p:inputText id="rating" value="#{userRatingController.selected.rating}" title="#{bundle.EditUserRatingTitle_rating}" />
-                        <p:outputLabel value="#{bundle.EditUserRatingLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userRatingController.selected.id}" title="#{bundle.EditUserRatingTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditUserRatingLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{userRatingController.selected.id}" title="#{bundle.EditUserRatingTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userRatingController.update}" value="#{bundle.Save}" update="display,:UserRatingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UserRatingEditDialog');"/>
+                    <p:commandButton actionListener="#{userRatingController.update}" value="#{bundle.Save}" update="UserRatingEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserRatingEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

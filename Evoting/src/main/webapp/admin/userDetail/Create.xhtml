@@ -18,14 +18,15 @@
                         <p:inputText id="phoneNo" value="#{userDetailController.selected.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
                         <p:outputLabel value="#{bundle.CreateUserDetailLabel_address}" for="address" />
                         <p:inputText id="address" value="#{userDetailController.selected.address}" title="#{bundle.CreateUserDetailTitle_address}" />
-                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.CreateUserDetailTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.CreateUserDetailLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.CreateUserDetailTitle_id}" />
+                        </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userDetailController.create}" value="#{bundle.Save}" update="display,:UserDetailListForm:datalist,:growl" oncomplete="handleSubmit(args,'UserDetailCreateDialog');"/>
+                    <p:commandButton actionListener="#{userDetailController.create}" value="#{bundle.Save}" update="UserDetailCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserDetailCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
-
     </ui:composition>
 </html>

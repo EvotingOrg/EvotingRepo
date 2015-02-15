@@ -25,8 +25,10 @@
                         <p:inputText id="totalCount" value="#{pollOptionsController.selected.totalCount}" title="#{bundle.EditPollOptionsTitle_totalCount}" />
                         <p:outputLabel value="#{bundle.EditPollOptionsLabel_result}" for="result" />
                         <p:inputText id="result" value="#{pollOptionsController.selected.result}" title="#{bundle.EditPollOptionsTitle_result}" />
-                        <p:outputLabel value="#{bundle.EditPollOptionsLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{pollOptionsController.selected.id}" title="#{bundle.EditPollOptionsTitle_id}" />
+                        <ui:remove>
+                            <p:outputLabel value="#{bundle.EditPollOptionsLabel_id}" for="id" />
+                            <p:inputText id="id" value="#{pollOptionsController.selected.id}" title="#{bundle.EditPollOptionsTitle_id}" />
+                        </ui:remove>    
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pollOptionsController.update}" value="#{bundle.Save}" update="display,:PollOptionsListForm:datalist,:growl,@form" oncomplete="PollOptionsEditDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PollOptionsEditDialog.hide()"/>
