@@ -14,7 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{userPollingController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateUserPollingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userPollingController.selected.userId}" >
-                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>

@@ -11,15 +11,15 @@
         <p:dialog id="UsersViewDlg" widgetVar="UsersViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUsersTitle}">
             <h:form id="UsersViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
+                    <p:panelGrid columns="2" rendered="#{userController.selected != null}">
                         <h:outputText value="#{bundle.ViewUsersLabel_userName}"/>
-                        <h:outputText value="#{usersController.selected.userName}" title="#{bundle.ViewUsersTitle_userName}"/>
+                        <h:outputText value="#{userController.selected.userName}" title="#{bundle.ViewUsersTitle_userName}"/>
                         <h:outputText value="#{bundle.ViewUsersLabel_password}"/>
-                        <h:outputText value="#{usersController.selected.password}" title="#{bundle.ViewUsersTitle_password}"/>
+                        <h:outputText value="#{userController.selected.password}" title="#{bundle.ViewUsersTitle_password}"/>
                         <h:outputText value="#{bundle.ViewUsersLabel_userDetail}"/>
-                        <h:outputText value="#{usersController.selected.userDetail}" title="#{bundle.ViewUsersTitle_userDetail}"/>
+                        <h:outputText value="#{userController.selected.userDetail}" title="#{bundle.ViewUsersTitle_userDetail}"/>
                         <h:outputText value="#{bundle.ViewUsersLabel_id}"/>
-                        <h:outputText value="#{usersController.selected.id}" title="#{bundle.ViewUsersTitle_id}"/>
+                        <h:outputText value="#{userController.selected.id}" title="#{bundle.ViewUsersTitle_id}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="UsersViewDialog.hide()"/>
                 </h:panelGroup>

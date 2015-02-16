@@ -20,43 +20,51 @@
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'candidate/List.xhtml'}">
                                 <ui:include src="candidate/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'category/List.xhtml'}">
                                 <ui:include src="category/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'election/List.xhtml'}">
                                 <ui:include src="election/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'electionCandidate/List.xhtml'}">
                                 <ui:include src="electionCandidate/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'groups/List.xhtml'}">
                                 <ui:include src="groups/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'pollOptions/List.xhtml'}">
                                 <ui:include src="pollOptions/List.xhtml"/>
                             </ui:fragment>
+
                             <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'product/List.xhtml'}">
                                 <ui:include src="product/List.xhtml"/>
                             </ui:fragment>
-                        </h:panelGroup>
 
-                        <ui:remove>
-                            <ui:include src="candidate/List.xhtml"/>
-                        </ui:remove>
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userPolling/List.xhtml'}">
+                                <ui:include src="userPolling/List.xhtml"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userRating/List.xhtml'}">
+                                <ui:include src="userRating/List.xhtml"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userVoting/List.xhtml'}">
+                                <ui:include src="userVoting/List.xhtml"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'users/List.xhtml'}">
+                                <ui:include src="users/List.xhtml"/>
+                            </ui:fragment>
+
+                        </h:panelGroup>
                     </ui:insert>
                 </p:layoutUnit>
             </p:layout>
-
-            <ui:remove>
-                <!--            <p style="background-color: red">
-                                <p><h:link outcome="/index" value="To Home Page" /></p>
-                                <p>
-                                    <h:form>
-                                        <h:commandLink action="#{logoutBean.logout}" value="Logout" />
-                                    </h:form>
-                                </p>
-                            </p>-->
-            </ui:remove>
         </ui:define>
     </ui:composition>
 </html>

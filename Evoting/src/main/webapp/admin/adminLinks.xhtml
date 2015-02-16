@@ -31,6 +31,20 @@
             <p:commandButton value="Show All Products"  update=":#{p:component('ui')}"
                              action="#{uiHandlerBean.setSelectedAdminPage('product/List.xhtml')}"/>
 
+            <br />
+            <p:commandButton value="Show All User Polling"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('userPolling/List.xhtml')}"/>
+            <br />
+            <p:commandButton value="Show All User Rating"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('userRating/List.xhtml')}"/>
+            <br />
+            <p:commandButton value="Show All User Voting"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('userVoting/List.xhtml')}"/>
+
+            <br/>
+            <p:commandButton value="Show All Users"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('users/List.xhtml')}"/>
+
         </h:form>
     </ui:composition>
 

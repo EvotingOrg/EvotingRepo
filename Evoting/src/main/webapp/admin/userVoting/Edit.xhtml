@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.EditUserVotingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userVotingController.selected.userId}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>

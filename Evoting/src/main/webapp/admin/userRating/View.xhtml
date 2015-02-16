@@ -8,7 +8,8 @@
 
     <ui:composition>
 
-        <p:dialog id="UserRatingViewDlg" widgetVar="UserRatingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUserRatingTitle}">
+        <p:dialog id="UserRatingViewDlg" widgetVar="UserRatingViewDialog" modal="true" resizable="false" appendTo="@(body)" 
+                  header="#{bundle.ViewUserRatingTitle}">
             <h:form id="UserRatingViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{userRatingController.selected != null}">
@@ -29,6 +30,5 @@
                 </h:panelGroup>
             </h:form>
         </p:dialog>
-
     </ui:composition>
 </html>

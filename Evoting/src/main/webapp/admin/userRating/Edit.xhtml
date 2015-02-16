@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.EditUserRatingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userRatingController.selected.userId}" required="true" requiredMessage="#{bundle.EditUserRatingRequiredMessage_userId}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>
@@ -35,7 +35,7 @@
                             <p:inputText id="id" value="#{userRatingController.selected.id}" title="#{bundle.EditUserRatingTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userRatingController.update}" value="#{bundle.Save}" update="UserRatingEditDialog.hide();"/>
+                    <p:commandButton actionListener="#{userRatingController.update}" value="#{bundle.Save}" oncomplete="UserRatingEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserRatingEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

@@ -29,7 +29,7 @@
                             <p:inputText id="id" value="#{productController.selected.id}" title="#{bundle.CreateProductTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{productController.create}" value="#{bundle.Save}" update="ProductCreateDialog.hide();"/>
+                    <p:commandButton actionListener="#{productController.create}" value="#{bundle.Save}" oncomplete="ProductCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ProductCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

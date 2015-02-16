@@ -14,7 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{userVotingController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateUserVotingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userVotingController.selected.userId}" >
-                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>
@@ -31,7 +31,7 @@
                             <p:inputText id="id" value="#{userVotingController.selected.id}" title="#{bundle.CreateUserVotingTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userVotingController.create}" value="#{bundle.Save}" update="UserVotingCreateDialog.hide();"/>
+                    <p:commandButton actionListener="#{userVotingController.create}" value="#{bundle.Save}" update="display,:UserVotingListForm:datalist,:growl" oncomplete="UserVotingCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserVotingCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.EditUserPollingLabel_userId}" for="userId" />
                         <p:selectOneMenu id="userId" value="#{userPollingController.selected.userId}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userIdItem"
                                            itemValue="#{userIdItem}"/>
                         </p:selectOneMenu>
@@ -40,7 +40,7 @@
                             <p:inputText id="id" value="#{userPollingController.selected.id}" title="#{bundle.EditUserPollingTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{userPollingController.update}" value="#{bundle.Save}" update="UserPollingEditDialog.hide();"/>
+                    <p:commandButton actionListener="#{userPollingController.update}" value="#{bundle.Save}" oncomplete="UserPollingEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UserPollingEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
