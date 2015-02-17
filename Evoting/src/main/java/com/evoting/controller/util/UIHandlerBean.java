@@ -18,6 +18,7 @@ import javax.inject.Named;
 public class UIHandlerBean implements Serializable {
 
     private String selectedAdminPage;
+    private String selectedUserPage;
 
     public String getSelectedAdminPage() {
         return selectedAdminPage;
@@ -27,4 +28,11 @@ public class UIHandlerBean implements Serializable {
         this.selectedAdminPage = selectedAdminPage;
     }
 
+    public String getSelectedUserPage() {
+        return selectedUserPage;
+    }
+
+    public void setSelectedUserPage(String selectedUserPage) {
+        this.selectedUserPage = selectedUserPage;
+    }
 }
