@@ -73,13 +73,22 @@ jQuery(function($) {'use strict',
 	});
 	
         $('#signup-link').bind("click", function() {
-           $('#login').modal('hide');
-            $('#signup').modal('toggle');
+            $('#login').modal('hide');
+            $('#forgot_password').modal('hide');
+            $('#signup').modal('toggle');           
         });
         
         $('#login-link').bind("click", function() {
-           $('#signup').modal('hide');
+            alert('login clicked');
+            $('#signup').modal('hide');
+            $('#forgot_password').modal('hide');
             $('#login').modal('toggle');
+        });
+        
+        $('#fp-link').bind("click", function() {
+            $('#signup').modal('hide');
+            $('#login').modal('hide');
+            $('#forgot_password').modal('toggle');
         });
         
         $('#logout_buffer').bind("click", function() {

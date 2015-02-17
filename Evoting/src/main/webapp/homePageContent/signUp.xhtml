@@ -7,7 +7,7 @@
     <ui:composition>
 
         <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false"  header="#{bundle.CreateUsersTitle}">
-            <h:form id="UsersCreateForm">
+            <h:form id="UsersCreateForm1">
                 <p:panelGrid columns="2" style="border-radius: 1px;"> 
                     <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
                     <p:inputText id="userName" value="#{userController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
@@ -30,6 +30,5 @@
                 <p:commandButton id="cancelbtn" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
             </h:form>
         </p:dialog>
-
     </ui:composition>
 </html>

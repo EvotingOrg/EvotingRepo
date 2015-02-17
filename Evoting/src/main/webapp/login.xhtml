@@ -3,42 +3,101 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">    
     <ui:composition>
         <!-- Code for Login  -->
         <!-- Modal Log in -->
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-            <div class="modal-dialog" style="margin-top: 150px; width:20%;">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel1">Login to your account</h4>
-                        </div>
-                    </form>
+            <div class="modal-dialog" style="margin-top: 150px; width:30%;">
+                <div class="modal-content">                    
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel1">Login to your account</h4>
+                    </div>                   
 
                     <form method="POST" action="j_security_check">
-                        <div style="position: relative; left: 8%" class="modal-body" id="login_details">
+                        <div class="modal-body" id="login_details">
                             <span> Already have an account? </span> <br/><br/>
                             *<span style="font-weight:bold;">Your Email</span><br />
-                            <input type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
+                            <input style="width: 100%" type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
                             *<span style="font-weight:bold;" >Password</span><br />
-                            <input type="password" placeholder="Password" name="j_password" /><br/>
+                            <input style="width: 100%" type="password" placeholder="Password" name="j_password" /><br/>
                             <!--for login set 2 things.jdbc realm and run sql file .see resource src/resource folder-->
                         </div>
                         <div class="modal-footer" >
-                            <input style="position:relative;left:-36%" type="submit" class="btn btn-success" value="Login" />
-<!--                            <span class="fp-link"> <a href="#">Forgot Password?</a></span>
+                            <input style="position:relative;left:-50%" type="submit" class="btn btn-success" value="Login" />
+                            <span class="text-info" id="fp-link" style="cursor:pointer;">Forgot Password?</span>
                             <br/><br/>
                             <span> Not a member yet?</span>-->
-                            <!--                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
-
-<!--                            <h:form><p:commandButton value="Sign Up"/></h:form>-->
-
+                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>
+                            <!--<h:form><p:commandButton value="Sign Up"/></h:form>-->
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <!-- Modal Sign-up Starts -->
+        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+            <div class="modal-dialog" style="margin-top: 100px; width: 30%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel2">Sign Up</h4>
+                    </div>
+                    <div class="modal-body" id="signup_details">
+                        <h:form id="UsersCreateForm">
+                            <p:panelGrid columns="2" style="border-radius: 1px;"> 
+                                <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
+                                <p:inputText id="userName" value="#{userController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
+                                <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
+                                <p:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
+                                <p:outputLabel value="Confirm Password" for="confirm_password"/>
+                                <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}"/>
+                                <p:outputLabel value="Voter Id" for="voterId"/>
+                                <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}"/>
+                                <p:outputLabel value="Phone No" for="phoneNo"/>
+                                <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}"/>
+                                <p:outputLabel value="State" for="state"/>
+                                <p:inputText id="state" value="#{userController.selected.userDetail.address.stateName}"/>
+                                <p:outputLabel value="City" for="city"/>
+                                <p:inputText id="city" value="#{userController.selected.userDetail.address.city}"/>
+                                <p:outputLabel value="Country" for="country"/>
+                                <p:inputText id="country" value="#{userController.selected.userDetail.address.country}"/>
+                            </p:panelGrid>
+                            <h:commandButton id="savebtn" actionListener="#{userController.create}" immediate="true" value="#{bundle.Save}"/>
+                            
+                            <p:commandButton id="cancelbtn" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
+                        </h:form>
+                    </div>
+                    <div class="modal-footer" >
+<!--                        <input style="float: left" type="button" class="btn btn-success"  value="Sign Me Up" /> -->
+                        <span>&nbsp;&nbsp;&nbsp; Already a member? </span>
+                        <span id="login-link" class="text-info" style="cursor:pointer;">  Login now  </span> 
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- Modal Sign up ends! -->
+        <div class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+            <div class="modal-dialog" style="margin-top: 150px; width:30%;">
+                <div class="modal-content">                    
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel3">Send New Password</h4>
+                    </div>
+                    
+                    <div class="modal-body" id="login_details">
+                        <span> Forgot Your Password? </span> <br/><br/>
+                        *<span style="font-weight:bold;">Your Email</span><br />
+                        <input style="width: 100%" type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
+                    </div>
+                    <div class="modal-footer" >
+                        <input style="position:relative;left:-5%" type="submit" class="btn btn-success" value="Send Password" />
+                        <span>Remember Password? </span>
+                        <span id="login-link" class="text-info" style="cursor:pointer;">  Login now  </span>                          
+                    </div>                    
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
     </ui:composition>
 </html>
