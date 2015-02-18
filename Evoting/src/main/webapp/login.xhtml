@@ -29,11 +29,11 @@
                             <span class="text-info" id="fp-link" style="cursor:pointer;">Forgot Password?</span>
                             <br/><br/>
                             <span> Not a member yet?</span>-->
-                        </div>
-                        <p:commandButton class="signup-link_popup"  immediate="true" value="Sign Up" actionListener="#{userController.prepareCreate()}" async="true"/>
+                            <p:commandButton class="signup-link_popup"  immediate="true" value="Sign Up" actionListener="#{userController.prepareCreate()}" async="true"/>
+                        </div>                        
                     </form>
 
-                    <!--                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
+                    <!--<span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
 
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -48,7 +48,7 @@
                     </div>
                     <div class="modal-body" id="signup_details">
                         <h:form id="UsersCreateForm">
-                            <p:panelGrid columns="2" style="border-radius: 1px;"> 
+                            <p:panelGrid columns="2" style="border: none; border-collapse: collapse; outline: none;"> 
                                 <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
                                 <p:inputText id="userName" value="#{userController.selected.userName}"
                                              title="#{bundle.CreateUsersTitle_userName}" required="true"/>
@@ -67,9 +67,9 @@
                                 <p:outputLabel value="Country" for="country"/>
                                 <p:inputText id="country" value="#{userController.selected.userDetail.address.country}" required="true"/>
                             </p:panelGrid>
-                            <h:commandButton id="savebtn" actionListener="#{userController.create}" value="#{bundle.Save}"/>
+                            <h:commandButton style="margin-top: 10px;" id="savebtn" actionListener="#{userController.create}" value="#{bundle.Save}"/>
 
-                            <p:commandButton id="cancelbtn" style="margin-left: 1em;" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
+                            <!--<p:commandButton id="cancelbtn" style="margin-left: 1em;" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>-->
                         </h:form>
                     </div>
                     <div class="modal-footer" >
@@ -107,5 +107,13 @@
             </div><!-- /.modal-dialog -->
         </div>
         <!-- Modal Forgot Password Ends! -->
+        <style>
+            .ui-widget-content {
+                border: none;
+            }
+            .ui-panelgrid td {
+                border-width: 0;                
+            }
+        </style>
     </ui:composition>
 </html>
