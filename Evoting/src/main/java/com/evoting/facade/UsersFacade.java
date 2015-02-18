@@ -34,7 +34,7 @@ public class UsersFacade extends AbstractFacade<Users> {
     public Users findByUserName(String userName) {
         Users user = null;
         try {
-            Query query = getEntityManager().createQuery("SELECT u FROM USER u WHERE u.username:userName");
+            Query query = getEntityManager().createQuery("SELECT u FROM Users u WHERE u.userName=:userName");
             query.setParameter("userName", userName);
             user = (Users) query.getSingleResult();
         } catch (Exception e) {

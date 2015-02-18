@@ -5,14 +5,18 @@
  */
 package com.evoting.entity;
 
+import com.evoting.controller.util.HashedPasswordGenerator;
+import com.evoting.enums.RoleTypeEnum;
 import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -31,10 +35,16 @@ public class Users extends AbstractLongPKEntity {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_detail_id")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @Column(name = "status")
+    private Boolean status;
+
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_detail_id", referencedColumnName = "id")
     private UserDetail userDetail;
+
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
+    private Groups group;
 
     @OneToMany(mappedBy = "userId")
     @LazyCollection(LazyCollectionOption.TRUE)
@@ -86,12 +96,35 @@ public class Users extends AbstractLongPKEntity {
         this.userPollings = userPollings;
     }
 
+    public Groups getGroup() {
+        return group;
+    }
+
+    public void setGroup(Groups group) {
+        this.group = group;
+    }
+
     public String getConfirmPassword() {
         return confirmPassword;
     }
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    @PrePersist
+    public void setHashedPassword() {
+        setPassword(HashedPasswordGenerator.generateHash(getPassword()));
+        this.setGroup(new Groups(userName, RoleTypeEnum.user));
+        this.status = true;
     }
 
     @Override

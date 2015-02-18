@@ -23,10 +23,19 @@
                                            var="userDetailItem"
                                            itemValue="#{userDetailItem}"/>
                         </p:selectOneMenu>
-                        <ui:remove>
-                            <p:outputLabel value="#{bundle.EditUsersLabel_id}" for="id" />
-                            <p:inputText id="id" value="#{userController.selected.id}" title="#{bundle.EditUsersTitle_id}" />
-                        </ui:remove>
+
+                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_voterId}" for="voterId" />
+                        <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}" title="#{bundle.CreateUserDetailTitle_voterId}" />
+                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_phoneNo}" for="phoneNo" />
+                        <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
+
+                        <p:outputLabel value="Country" for="country"/>
+                        <p:inputText id="country" value="#{userController.selected.userDetail.address.country}" />
+                        <p:outputLabel value="State" for="state"/>
+                        <p:inputText value="#{userController.selected.userDetail.address.stateName}" id="state"/>
+                        <p:outputLabel value="City" for="city"/>
+                        <p:inputText value="#{userController.selected.userDetail.address.city}" id="city"/>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{userController.update}" value="#{bundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="UsersEditDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UsersEditDialog.hide()"/>

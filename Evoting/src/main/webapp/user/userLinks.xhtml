@@ -7,7 +7,10 @@
     <ui:composition>
         <h:form>
             <p:commandButton class="main_buttons" value="Show All Candidate Items" update=":#{p:component('ui')}"    
-                             action="#{uiHandlerBean.setSelectedAdminPage('admin/candidate/List.xhtml')}"/>
+                             action="#{sessionBean.setSelectedAdminPage('admin/candidate/List.xhtml')}"/>
+            
+            <p:commandButton class="main_buttons"  value="Profile" update=":#{p:component('ui')}"
+                             action="#{sessionBean.setSelectedUserPage('UserProfile.xhtml')}"/>
         </h:form>
     </ui:composition>
 </html>

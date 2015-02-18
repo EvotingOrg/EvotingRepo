@@ -31,13 +31,12 @@ public class UserController extends AbstractViewController<Users> {
     
     public UserController() {
     }
-    
-    @PostConstruct
-    public void init() {
-        setSelected(new Users());
-        getSelected().setUserDetail(new UserDetail(new Address()));
-    }
-    
+
+//    @PostConstruct
+//    public void init() {
+//        setSelected(new Users());
+//        getSelected().setUserDetail(new UserDetail(new Address()));
+//    }
     protected void setEmbeddableKeys() {
     }
     
@@ -51,6 +50,8 @@ public class UserController extends AbstractViewController<Users> {
     
     public Users prepareCreate() {
         setSelected(new Users());
+        getSelected().setUserDetail(new UserDetail());
+        getSelected().getUserDetail().setAddress(new Address());
         initializeEmbeddableKey();
         return getSelected();
     }
@@ -85,7 +86,9 @@ public class UserController extends AbstractViewController<Users> {
         if (getSelected() != null) {
             setEmbeddableKeys();
             try {
-                if (persistAction != PersistAction.DELETE) {
+                if (persistAction == PersistAction.CREATE) {
+                    getFacade().create(getSelected());
+                } else if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(getSelected());
                 } else {
                     getFacade().remove(getSelected());
@@ -119,6 +122,7 @@ public class UserController extends AbstractViewController<Users> {
     
     public List<Users> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+        
     }
     
     @FacesConverter(forClass = Users.class)

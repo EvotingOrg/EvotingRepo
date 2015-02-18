@@ -17,7 +17,7 @@ import java.text.MessageFormat;
  */
 public class HashedPasswordGenerator {
 
-    public static void generateHash(String password) {
+    public static String generateHash(String password) {
         // This is one way of generating a SHA-256 hash. I uses classes/methods
         // from the Google Guava project. See the Maven pom.xml file which
         // I've modified to include the Guava libraries. See the imports
@@ -27,6 +27,7 @@ public class HashedPasswordGenerator {
         String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
 
         System.out.println(output);
+        return hash;
     }
 
     public static void main(String[] args) {

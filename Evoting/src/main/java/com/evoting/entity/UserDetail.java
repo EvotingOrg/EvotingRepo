@@ -10,13 +10,16 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
+ * @Table(name = "elction_candidate", uniqueConstraints =
+ * @UniqueConstraint(columnNames = {"election_id", "candidate_id"}))
  *
  * @author Raj
  */
 @Entity
-@Table(name = "user_detail")
+@Table(name = "user_detail", uniqueConstraints = @UniqueConstraint(columnNames = {"voter_id"}))
 public class UserDetail extends AbstractLongPKEntity {
 
     @Column(name = "voter_id")

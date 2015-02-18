@@ -17,47 +17,47 @@
                 <p:layoutUnit position="center">
                     <ui:insert name="ceneter">
                         <h:panelGroup id="ui">
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'candidate/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'candidate/List.xhtml'}">
                                 <ui:include src="candidate/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'category/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'category/List.xhtml'}">
                                 <ui:include src="category/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'election/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'election/List.xhtml'}">
                                 <ui:include src="election/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'electionCandidate/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'electionCandidate/List.xhtml'}">
                                 <ui:include src="electionCandidate/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'groups/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'groups/List.xhtml'}">
                                 <ui:include src="groups/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'pollOptions/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'pollOptions/List.xhtml'}">
                                 <ui:include src="pollOptions/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'product/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'product/List.xhtml'}">
                                 <ui:include src="product/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userPolling/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userPolling/List.xhtml'}">
                                 <ui:include src="userPolling/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userRating/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userRating/List.xhtml'}">
                                 <ui:include src="userRating/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'userVoting/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userVoting/List.xhtml'}">
                                 <ui:include src="userVoting/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{uiHandlerBean.selectedAdminPage eq 'users/List.xhtml'}">
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'users/List.xhtml'}">
                                 <ui:include src="users/List.xhtml"/>
                             </ui:fragment>
 

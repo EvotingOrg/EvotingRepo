@@ -31,11 +31,11 @@ public class GroupsFacade extends AbstractFacade<Groups> {
         super(Groups.class);
     }
 
-    public Groups findByUserName(String userName) {
+    public Groups findByUserName(String user) {
         Groups userGroup = null;
         try {
-            Query query = getEntityManager().createQuery("SELECT g FROM Groups g WHERE g.username:userName");
-            query.setParameter("userName", userName);
+            Query query = getEntityManager().createQuery("SELECT g FROM Groups g WHERE g.userName=:user");
+            query.setParameter("user", user);
             userGroup = (Groups) query.getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();

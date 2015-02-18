@@ -5,28 +5,37 @@
  */
 package com.evoting.entity;
 
-import java.io.Serializable;
+import com.evoting.enums.RoleTypeEnum;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Rajesh Yadav <developerrajeshyadav@gmail.com>
  */
 @Entity
-@Table(name = "groups")
+@Table(name = "groups", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "groupname"}))
 public class Groups extends AbstractLongPKEntity {
 
     @Column(name = "username")
     private String userName;
-  
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "groupname")
-    private String groupName;
+    private RoleTypeEnum groupName;
+
+    public Groups() {
+    }
+
+    public Groups(String userName, RoleTypeEnum groupName) {
+        this.userName = userName;
+        this.groupName = groupName;
+    }
 
     public String getUserName() {
         return userName;
@@ -36,11 +45,11 @@ public class Groups extends AbstractLongPKEntity {
         this.userName = userName;
     }
 
-    public String getGroupName() {
+    public RoleTypeEnum getGroupName() {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setGroupName(RoleTypeEnum groupName) {
         this.groupName = groupName;
     }
 

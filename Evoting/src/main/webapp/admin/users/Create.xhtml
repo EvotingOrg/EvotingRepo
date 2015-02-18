@@ -10,32 +10,24 @@
 
         <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsersTitle}">
             <h:form id="UsersCreateForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{userController.selected != null}">
+                <h:panelGroup id="display" >
+                    <h:panelGrid columns="2" rendered="#{userController.selected != null}" cellpadding="10px;" cellspacing="25px;">
                         <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
                         <p:inputText id="userName" value="#{userController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
                         <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
-                        <p:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
-                        <p:outputLabel value="#{bundle.CreateUsersLabel_userDetail}" for="userDetail" />
-                        <p:selectOneMenu id="userDetail" value="#{userController.selected.userDetail}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_userDetail}">
-                            <f:selectItems value="#{userDetailController.itemsAvailableSelectOne}"
-                                           var="userDetailItem"
-                                           itemValue="#{userDetailItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateUsersLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{userController.selected.id}" title="#{bundle.CreateUsersTitle_id}" />
-                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_voterId}" for="voterId" />
-                        <p:inputText id="voterId" value="#{userDetailController.selected.voterId}" title="#{bundle.CreateUserDetailTitle_voterId}" />
-                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_phoneNo}" for="phoneNo" />
-                        <p:inputText id="phoneNo" value="#{userDetailController.selected.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
-                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_address}" for="address" />
-                        <p:inputText id="address" value="#{userDetailController.selected.address}" title="#{bundle.CreateUserDetailTitle_address}" />
+                        <p:password id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
 
-                        <ui:remove>
-                            <p:outputLabel value="#{bundle.CreateUserDetailLabel_id}" for="id" />
-                            <p:inputText id="id" value="#{userDetailController.selected.id}" title="#{bundle.CreateUserDetailTitle_id}" />
-                        </ui:remove>
-                    </p:panelGrid>
+                        <p:outputLabel value="#{bundle.CreateUserDetailLabel_phoneNo}" for="phoneNo" />
+                        <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
+
+                        <p:outputLabel value="Country" for="country"/>
+                        <p:inputText id="country" value="#{userController.selected.userDetail.address.country}" />
+                        <p:outputLabel value="State" for="state"/>
+                        <p:inputText value="#{userController.selected.userDetail.address.stateName}" id="state"/>
+                        <p:outputLabel value="City" for="city"/>
+                        <p:inputText value="#{userController.selected.userDetail.address.city}" id="city"/>
+
+                    </h:panelGrid>
                     <p:commandButton actionListener="#{userController.create}" value="#{bundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="UsersCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
                 </h:panelGroup>

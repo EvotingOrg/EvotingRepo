@@ -21,30 +21,49 @@
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUsersTitle_userName}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.userName}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUsersTitle_password}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.password}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUsersTitle_userDetail}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.userDetail}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
                             <h:outputText value="#{bundle.ListUsersTitle_id}"/>
                         </f:facet>
                         <h:outputText value="#{item.id}"/>
                     </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListUsersTitle_userName}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.userName}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Phone No"/>
+                        </f:facet>   
+                        <h:outputText value="#{userController.selected.userDetail.phoneNo}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Country"/>
+                        </f:facet>   
+                        <h:outputText id="country" value="#{userController.selected.userDetail.address.country}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="State"/>
+                        </f:facet>   
+                        <h:outputText value="#{userController.selected.userDetail.address.stateName}" id="state"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="City"/>
+                        </f:facet>   
+                        <h:outputText value="#{userController.selected.userDetail.address.city}" id="city"/>
+                    </p:column>
+
                     <f:facet name="footer">
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{userController.prepareCreate}" update=":UsersCreateForm" oncomplete="PF('UsersCreateDialog').show()" disabled="true"/>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{userController.prepareCreate}" update=":UsersCreateForm" oncomplete="PF('UsersCreateDialog').show()" disabled="false"/>
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty userController.selected}"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":UsersEditForm" oncomplete="PF('UsersEditDialog').show()" disabled="true"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{userController.destroy}" update=":growl,datalist" disabled="true"/>
