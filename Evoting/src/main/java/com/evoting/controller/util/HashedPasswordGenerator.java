@@ -24,13 +24,13 @@ public class HashedPasswordGenerator {
         // above which show what is being used.
         String hash = Hashing.sha256().hashString(password, Charsets.UTF_8).toString();
 
-        String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
+        //String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
 
         System.out.println(output);
         return hash;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // you can generate as many as you need ... modify to suite...
         //store this generated value in your database password value.
         generateHash("rajesh");//973d7f9efc06ba81112bceb8205309ff0f49c303c28914a1dcf143d86a1b15b4
@@ -38,5 +38,5 @@ public class HashedPasswordGenerator {
         generateHash("hem");//d4a0ffcc990b5a1341cc261f330efe9b38ecf5af644bfda4ac2b17fbaaf999e6
         generateHash("admin");//8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         generateHash("user");//04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb
-    }
+    }*/
 }

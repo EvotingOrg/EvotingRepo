@@ -32,9 +32,7 @@ import javax.mail.internet.MimeMultipart;
 @LocalBean
 public class EmailSessionBean {
     private int port = 465;
-    private String host = "smtp.gmail.com";
-    private String from = "";
-    private String to = "";
+    private String host = "smtp.gmail.com";   
     private boolean auth = true;
     private String username = "ashok.crossover@gmail.com";
     private String password = "crossover123";
@@ -42,10 +40,7 @@ public class EmailSessionBean {
     private boolean debug = true;
 
     @Asynchronous
-    public void sendEmail(String from, String subject, String body) {
-        this.from = from;
-        to = "ashookkafle@gmail.com";
-        
+    public void sendEmail(String to, String from, String subject, String body) {        
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", port);        

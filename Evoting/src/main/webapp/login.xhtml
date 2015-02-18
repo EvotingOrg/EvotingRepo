@@ -37,7 +37,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- Modal Sign-up Starts -->
-        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+        <div style="overflow: hidden;" class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
             <div class="modal-dialog" style="margin-top: 100px; width: 30%;">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -66,7 +66,7 @@
                             </p:panelGrid>
                             <h:commandButton id="savebtn" actionListener="#{userController.create}" immediate="true" value="#{bundle.Save}"/>
                             
-                            <p:commandButton id="cancelbtn" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
+                            <p:commandButton id="cancelbtn" style="margin-left: 1em;" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
                         </h:form>
                     </div>
                     <div class="modal-footer" >
@@ -78,7 +78,8 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- Modal Sign up ends! -->
-        <div class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+        <!-- Modal Forgot Password Starts! -->
+        <div style="overflow: hidden;" class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
             <div class="modal-dialog" style="margin-top: 150px; width:30%;">
                 <div class="modal-content">                    
                     <div class="modal-header">
@@ -86,18 +87,22 @@
                         <h4 class="modal-title" id="myModalLabel3">Send New Password</h4>
                     </div>
                     
+                    <form method="post" action="EmailServlet" name="forgot-password-form">
                     <div class="modal-body" id="login_details">
                         <span> Forgot Your Password? </span> <br/><br/>
                         *<span style="font-weight:bold;">Your Email</span><br />
-                        <input style="width: 100%" type="text" placeholder="example@gmail.com" name="j_username" /><br/><br/>
+                        <input style="width: 100%" type="text" placeholder="example@gmail.com" name="forgot_email" /><br/><br/>
+                        <input type="hidden" name="formName" value="forgot-password-form"/>
                     </div>
                     <div class="modal-footer" >
                         <input style="position:relative;left:-5%" type="submit" class="btn btn-success" value="Send Password" />
                         <span>Remember Password? </span>
-                        <span id="login-link" class="text-info" style="cursor:pointer;">  Login now  </span>                          
-                    </div>                    
+                        <span id="login-link1" class="text-info" style="cursor:pointer;">  Login now  </span>                          
+                    </div>
+                    </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div>
+        <!-- Modal Forgot Password Ends! -->
     </ui:composition>
 </html>

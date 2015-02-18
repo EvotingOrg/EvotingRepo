@@ -78,8 +78,13 @@ jQuery(function($) {'use strict',
             $('#signup').modal('toggle');           
         });
         
-        $('#login-link').bind("click", function() {
-            alert('login clicked');
+        $('#login-link').bind("click", function() {            
+            $('#signup').modal('hide');
+            $('#forgot_password').modal('hide');
+            $('#login').modal('toggle');
+        });
+        
+        $('#login-link1').bind("click", function() {            
             $('#signup').modal('hide');
             $('#forgot_password').modal('hide');
             $('#login').modal('toggle');
@@ -91,9 +96,7 @@ jQuery(function($) {'use strict',
             $('#forgot_password').modal('toggle');
         });
         
-        $('#logout_buffer').bind("click", function() {
-            //$("#btn_logout").click();
-            //alert('logout');
+        $('#logout_buffer').bind("click", function() {            
             $("#btn_logout").trigger("click");
         });
         
