@@ -72,8 +72,7 @@ jQuery(function ($) {
         $('#login').modal('toggle');
     });
 
-    $('.signup-link_popup').bind("click", function () {
-        alert("alert");
+    $('.signup-link_popup').bind("click", function () {        
         $('#login').modal('hide');
         $('#forgot_password').modal('hide');
         $('#signup').modal('toggle');
