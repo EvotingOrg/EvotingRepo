@@ -7,45 +7,41 @@
 
     <ui:composition>
         <h:form>
+            <p:commandButton style="width:15em;" value="Show All Candidate Items" update=":#{p:component('ui')}"    
+                             action="#{uiHandlerBean.setSelectedAdminPage('candidate/List.xhtml')}"/>
             <p:commandButton class="main_buttons" value="Show All Candidate Items" update=":#{p:component('ui')}"    
                              action="#{sessionBean.setSelectedAdminPage('candidate/List.xhtml')}"/>
             <br />
-            <p:commandButton class="main_buttons" value="Show All Category Items"   update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('category/List.xhtml')}"/>
+            <p:commandButton style="width: 15em;" value="Show All Category Items"   update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('category/List.xhtml')}"/>
             <br/>
-            <p:commandButton value="Show All Election List"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('election/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All Election Candidate"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('electionCandidate/List.xhtml')}"/>
+            <p:commandButton style="width: 15em;" value="Show All Election List"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('election/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All groups"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('groups/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All Polls"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('poll/List.xhtml')}"/>
+            <p:commandButton style= "width: 15em;" value="Show All Candidates"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('electionCandidate/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All PollOptions"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('pollOptions/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All Products"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('product/List.xhtml')}"/>
+            <p:commandButton style= "width: 15em;" value="Show All groups"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('groups/List.xhtml')}"/>
 
             <br />
-            <p:commandButton value="Show All User Polling"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('userPolling/List.xhtml')}"/>
+            <p:commandButton style= "width: 15em;" value="Show All Polls"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('poll/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All User Rating"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('userRating/List.xhtml')}"/>
             <br />
-            <p:commandButton value="Show All User Voting"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('userVoting/List.xhtml')}"/>
+            <p:commandButton style= "width: 15em;" value="Show All PollOptions"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('pollOptions/List.xhtml')}"/>
 
             <br/>
-            <p:commandButton value="Show All Users"  update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedAdminPage('users/List.xhtml')}"/>
+            <p:commandButton style= "width: 15em;" value="Show All Products"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('product/List.xhtml')}"/>
 
         </h:form>
     </ui:composition>
 
 </html>
+            <p:commandButton style= "width: 15em;" value="Show All User Polling"  update=":#{p:component('ui')}"
+                             action="#{uiHandlerBean.setSelectedAdminPage('userPolling/List.xhtml')}"/>
