@@ -17,17 +17,15 @@
                 <p:layoutUnit position="center">
                     <ui:insert name="ceneter">
                         <h:panelGroup id="ui">
-                            <ui:remove>
-                                <ui:fragment rendered="#{sessionBean.selectedAdminPage
-                                                         eq '/admin/candidate/List.xhtml'}">
-                                    <ui:include src="/admin/candidate/List.xhtml"/>
-                                </ui:fragment>
-                                <ui:fragment >
-                                    <ui:include src="UserProfile.xhtml"/>
-                                </ui:fragment>
-                            </ui:remove>
-                            rajesh
-                            <ui:include src="UserProfile.xhtml"/>
+                            <ui:fragment >
+                                <ui:include src="UserProfile.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage
+                                                     eq '/admin/candidate/List.xhtml'}">
+                                <ui:include src="/admin/candidate/List.xhtml"/>
+                            </ui:fragment>
+
+
                         </h:panelGroup>
                     </ui:insert>
                 </p:layoutUnit>

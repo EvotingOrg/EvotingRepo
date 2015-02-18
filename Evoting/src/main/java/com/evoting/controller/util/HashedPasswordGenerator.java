@@ -24,7 +24,7 @@ public class HashedPasswordGenerator {
         // above which show what is being used.
         String hash = Hashing.sha256().hashString(password, Charsets.UTF_8).toString();
 
-        //String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
+        String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
 
         System.out.println(output);
         return hash;
