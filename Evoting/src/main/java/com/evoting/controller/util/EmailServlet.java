@@ -24,8 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="EmailServlet", urlPatterns={"/EmailServlet"})
 public class EmailServlet extends HttpServlet {
     @EJB
-    private EmailSessionBean emailBean;  
-
+    private EmailSessionBean emailBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,27 +36,53 @@ public class EmailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, AddressException {
+        String form_name = request.getParameter("formName");
+        String to = "";
+        String from = "";
+        String subject = "";
+        String body = "";
         
-        String from = request.getParameter("email_addr");
-        String subject = request.getParameter("subject");
-        String message = request.getParameter("message");
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String c_name = request.getParameter("c_name");
+        if(form_name.equals("contact-form")) {
+            to = "ashookkafle@gmail.com";
+            from = request.getParameter("email_addr");
+            subject = request.getParameter("subject");
+            String message = request.getParameter("message");
+            String name = request.getParameter("name");
+            String phone = request.getParameter("phone");
+            String c_name = request.getParameter("c_name");        
+
+            body = "Name: " + name + "<br/>" 
+                    + "Phone: " + phone + "<br/>"
+                    + "Company Name: " + c_name + "<br/>"
+                    + "Message: " + message;
+        }
+        else if(form_name.equals("forgot-password-form")) {
+            from = "ashookkafle@gmail.com";
+            to = request.getParameter("forgot_email");
+            
+            //Generating random password string
+            PasswordGenerator pwd = new PasswordGenerator(8);
+            String new_password = pwd.get();
+            String hashed_password = HashedPasswordGenerator.generateHash(new_password);
+            /**
+             * @to-do update users password in database
+             */
+            subject = "Password Reset";
+            body = "Congratulation, Your Password is successfully reset. Your new login credentials are:<br/>" +
+                    "Username: " + to +
+                    "Password: " + new_password + "<br/>" +
+                    "Hashed Password: " + hashed_password + "<br/>" +
+                    "You can reset your password from 'My Account' after login.";
+        }
         
-        String body = "Name: " + name + "<br/>" 
-                + "Phone: " + phone + "<br/>"
-                + "Company Name: " + c_name + "<br/>"
-                + "Message: " + message;
-        
-        javax.mail.internet.InternetAddress ia = new javax.mail.internet.InternetAddress(from);
+        javax.mail.internet.InternetAddress ia = new javax.mail.internet.InternetAddress(to);
         try {
             ia.validate();
         } catch (javax.mail.internet.AddressException ae) {
             
         }
         
-       emailBean.sendEmail(from, subject, body);       
+       emailBean.sendEmail(to, from, subject, body);       
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
