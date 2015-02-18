@@ -49,7 +49,7 @@ public class EmailServlet extends HttpServlet {
         String subject = "";
         String body = "";
 
-        if (form_name.equals("contact-form")) {
+        if (form_name.equals("contact-form-popup")) {
             to = "ashookkafle@gmail.com";
             from = request.getParameter("email_addr");
             subject = request.getParameter("subject");
