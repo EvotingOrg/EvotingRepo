@@ -5,11 +5,14 @@
  */
 package com.evoting.controller.util;
 
+import com.evoting.entity.Users;
+import com.evoting.facade.UsersFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.mail.internet.AddressException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,10 +24,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ASHOK
  */
-@WebServlet(name="EmailServlet", urlPatterns={"/EmailServlet"})
+@WebServlet(name = "EmailServlet", urlPatterns = {"/EmailServlet"})
 public class EmailServlet extends HttpServlet {
+
     @EJB
     private EmailSessionBean emailBean;
+    @Inject
+    private UsersFacade userFacade;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,56 +48,55 @@ public class EmailServlet extends HttpServlet {
         String from = "";
         String subject = "";
         String body = "";
-        
-        if(form_name.equals("contact-form")) {
+
+        if (form_name.equals("contact-form")) {
             to = "ashookkafle@gmail.com";
             from = request.getParameter("email_addr");
             subject = request.getParameter("subject");
             String message = request.getParameter("message");
             String name = request.getParameter("name");
             String phone = request.getParameter("phone");
-            String c_name = request.getParameter("c_name");        
+            String c_name = request.getParameter("c_name");
 
-            body = "Name: " + name + "<br/>" 
+            body = "<html>Name: " + name + "<br/>"
                     + "Phone: " + phone + "<br/>"
                     + "Company Name: " + c_name + "<br/>"
-                    + "Message: " + message;
-        }
-        else if(form_name.equals("forgot-password-form")) {
+                    + "Message: " + message + "</html>";
+        } 
+        else if (form_name.equals("forgot-password-form")) {
             from = "ashookkafle@gmail.com";
             to = request.getParameter("forgot_email");
+
+            //Generating random password string            
+            String new_password = PasswordGenerator.passGen();            
             
-            //Generating random password string
-            PasswordGenerator pwd = new PasswordGenerator(8);
-            String new_password = pwd.get();
-            String hashed_password = HashedPasswordGenerator.generateHash(new_password);
-            /**
-             * @to-do update users password in database
-             */
+            Users dbUser = userFacade.findByUserName(to);
+            dbUser.setPassword(HashedPasswordGenerator.generateHash(new_password));
+            userFacade.edit(dbUser);
+
             subject = "Password Reset";
-            body = "Congratulation, Your Password is successfully reset. Your new login credentials are:<br/>" +
-                    "Username: " + to +
-                    "Password: " + new_password + "<br/>" +
-                    "Hashed Password: " + hashed_password + "<br/>" +
-                    "You can reset your password from 'My Account' after login.";
+            body = "<html>Congratulation, Your Password is successfully reset. Your new login credentials are:<br/>"
+                    + "Username: " + to
+                    + "Password: " + new_password + "<br/>"                    
+                    + "You can reset your password from 'My Account' after login.</html>";
         }
-        
+
         javax.mail.internet.InternetAddress ia = new javax.mail.internet.InternetAddress(to);
         try {
             ia.validate();
         } catch (javax.mail.internet.AddressException ae) {
-            
+
         }
-        
-       emailBean.sendEmail(to, from, subject, body);       
-        
+
+        emailBean.sendEmail(to, from, subject, body);
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EmailServlet</title>");            
+            out.println("<title>Servlet EmailServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Form Submitted</h1>");
