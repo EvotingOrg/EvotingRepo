@@ -6,11 +6,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
         <h:form>
-            <p:commandButton class="main_buttons" value="Show All Candidate Items" update=":#{p:component('ui')}"    
-                             action="#{sessionBean.setSelectedAdminPage('admin/candidate/List.xhtml')}"/>
-            
-            <p:commandButton class="main_buttons"  value="Profile" update=":#{p:component('ui')}"
-                             action="#{sessionBean.setSelectedUserPage('UserProfile.xhtml')}"/>
+
+            <p:commandButton class="main_buttons" immediate="true" value="Profile" update=":#{p:component('uii')}"
+                             action="#{sessionBean.setSelectedUserPage('/user/UserProfile.xhtml')}"/>
+            <br/>
+
+            <p:commandButton class="main_buttons" value="Voting" update=":#{p:component('uii')}"    
+                             action="#{sessionBean.setSelectedUserPage('/user/VoteForElection.xhtml')}"/>
+            <br/>
+            <p:commandButton class="main_buttons" value="Polling" update=":#{p:component('uii')}"    
+                             action="#{sessionBean.setSelectedUserPage('/user/PollforSurvey.xhtml')}"/>
+            <br/>
+            <p:commandButton class="main_buttons" value="Rating" update=":#{p:component('uii')}"    
+                             action="#{sessionBean.setSelectedUserPage('/user/RateforCategory.xhtml')}"/>
+
         </h:form>
     </ui:composition>
 </html>

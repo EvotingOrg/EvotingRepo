@@ -15,17 +15,20 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <ui:insert name="ceneter">
-                        <h:panelGroup id="ui">
-                            <ui:fragment >
-                                <ui:include src="UserProfile.xhtml"/>
+                    <ui:insert name="center">
+                        <h:panelGroup id="uii">
+                            <ui:fragment rendered="#{sessionBean.selectedUserPage eq '/user/UserProfile.xhtml'}">
+                                <ui:include src="/user/UserProfile.xhtml" />
                             </ui:fragment>
-                            <ui:fragment rendered="#{sessionBean.selectedAdminPage
-                                                     eq '/admin/candidate/List.xhtml'}">
-                                <ui:include src="/admin/candidate/List.xhtml"/>
+                            <ui:fragment rendered="#{sessionBean.selectedUserPage eq '/user/VoteForElection.xhtml'}">
+                                <ui:include src="/user/VoteForElection.xhtml"/>
                             </ui:fragment>
-
-
+                            <ui:fragment rendered="#{sessionBean.selectedUserPage eq '/user/PollforSurvey.xhtml'}">
+                                <ui:include src="/user/PollforSurvey.xhtml"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{sessionBean.selectedUserPage eq '/user/RateforCategory.xhtml'}">
+                                <ui:include src="/user/RateforCategory.xhtml"/>
+                            </ui:fragment>
                         </h:panelGroup>
                     </ui:insert>
                 </p:layoutUnit>

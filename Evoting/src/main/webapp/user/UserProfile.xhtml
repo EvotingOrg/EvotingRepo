@@ -11,8 +11,6 @@
             <h:panelGrid columns="2" rendered="#{sessionBean.currentUser != null}" cellpadding="25px;" cellspacing="25px;">
                 <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
                 <h:outputText id="userName" value="#{sessionBean.currentUser.userName}" title="#{bundle.CreateUsersTitle_userName}" />
-                <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
-                <p:password id="password" value="#{sessionBean.currentUser.password}" title="#{bundle.CreateUsersTitle_password}" />
 
                 <p:outputLabel value="#{bundle.CreateUserDetailLabel_phoneNo}" for="phoneNo" />
                 <h:outputText id="phoneNo" value="#{sessionBean.currentUser.userDetail.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
@@ -23,6 +21,7 @@
                 <h:outputText value="#{sessionBean.currentUser.userDetail.address.stateName}" id="state"/>
                 <p:outputLabel value="City" for="city"/>
                 <h:outputText value="#{sessionBean.currentUser.userDetail.address.city}" id="city"/>
+                
             </h:panelGrid>
         </h:form>
     </ui:composition>
