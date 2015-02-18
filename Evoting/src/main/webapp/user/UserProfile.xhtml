@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <h:form>
+        <h:form enctype="multipart/form-data">
             <h:panelGrid columns="2" rendered="#{sessionBean.currentUser != null}" cellpadding="25px;" cellspacing="25px;">
                 <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
                 <h:outputText id="userName" value="#{sessionBean.currentUser.userName}" title="#{bundle.CreateUsersTitle_userName}" />
@@ -23,6 +23,13 @@
                 <h:outputText value="#{sessionBean.currentUser.userDetail.address.city}" id="city"/>
                 
             </h:panelGrid>
+             
+            <p:growl id="messages" showDetail="true" />
+
+            <p:fileUpload value="#{fileUploadController.file}" mode="simple"/>
+
+            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}" disabled="false" />
+        
         </h:form>
     </ui:composition>
 </html>
