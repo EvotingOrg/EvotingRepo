@@ -52,7 +52,7 @@
                                 <li><h:commandButton class="main_buttons" value="Rating" action="#{sessionBean.userAdminIndexPageNavigateByRole()}"  immediate="true"/></li>
                                 <ui:fragment rendered="#{not sessionBean.isLoggedIn()}">
                                     <li><h:commandButton value="Login" class="loginpopup main_buttons" type="button"/></li> 
-                                    <li><h:commandButton value="Signup" class="main_buttons" type="button" onclick="UsersCreateDialog.show();"/></li>
+<!--                                <li><h:commandButton value="Signup" class="main_buttons" type="button" onclick="UsersCreateDialog.show();"/></li>-->
                                 </ui:fragment>
                                 <li><h:commandButton class="main_buttons" value="Contact"  immediate="true" action="contact.xhtml"/></li>
                                 <li class="dropdown">
