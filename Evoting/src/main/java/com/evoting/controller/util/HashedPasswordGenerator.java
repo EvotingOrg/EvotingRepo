@@ -26,7 +26,7 @@ public class HashedPasswordGenerator {
 
         String output = MessageFormat.format("{0} hashed to: {1}", password, hash);
 
-        System.out.println(output);
+        //System.out.println(output);
         return hash;
     }
 

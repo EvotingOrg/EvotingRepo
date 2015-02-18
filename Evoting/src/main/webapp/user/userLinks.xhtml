@@ -20,6 +20,11 @@
             <p:commandButton class="main_buttons" value="Rating" update=":#{p:component('uii')}"    
                              action="#{sessionBean.setSelectedUserPage('/user/RateforCategory.xhtml')}"/>
 
+            <p:commandButton style="width: 15em;"  value="Show All Candidate Items" update=":#{p:component('uii')}"    
+                             action="#{sessionBean.setSelectedAdminPage('admin/candidate/List.xhtml')}"/>
+
+            <p:commandButton style="width: 15em;"  value="Profile" update=":#{p:component('uii')}"
+                             action="#{sessionBean.setSelectedUserPage('UserProfile.xhtml')}"/>
         </h:form>
     </ui:composition>
 </html>

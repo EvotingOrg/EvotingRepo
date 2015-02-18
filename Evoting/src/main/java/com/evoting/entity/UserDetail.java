@@ -27,6 +27,17 @@ public class UserDetail extends AbstractLongPKEntity {
 
     @Column(name = "phone_no")
     private String phoneNo;
+    
+    @Column(name= "profile_pic")
+    private String profilePic;
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
 
     @Embedded
     private Address address;

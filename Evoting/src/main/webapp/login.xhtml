@@ -29,10 +29,12 @@
                             <span class="text-info" id="fp-link" style="cursor:pointer;">Forgot Password?</span>
                             <br/><br/>
                             <span> Not a member yet?</span>-->
-                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>
-                            <!--<h:form><p:commandButton value="Sign Up"/></h:form>-->
                         </div>
+                        <p:commandButton class="signup-link_popup"  immediate="true" value="Sign Up" actionListener="#{userController.prepareCreate()}" async="true"/>
                     </form>
+
+                    <!--                            <span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
+
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -48,29 +50,30 @@
                         <h:form id="UsersCreateForm">
                             <p:panelGrid columns="2" style="border-radius: 1px;"> 
                                 <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
-                                <p:inputText id="userName" value="#{userController.selected.userName}" title="#{bundle.CreateUsersTitle_userName}" />
+                                <p:inputText id="userName" value="#{userController.selected.userName}"
+                                             title="#{bundle.CreateUsersTitle_userName}" required="true"/>
                                 <p:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
-                                <p:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" />
+                                <p:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUsersTitle_password}" required="true"/>
                                 <p:outputLabel value="Confirm Password" for="confirm_password"/>
-                                <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}"/>
+                                <p:inputText id="confirm_password" value="#{userController.selected.confirmPassword}" required="true"/>
                                 <p:outputLabel value="Voter Id" for="voterId"/>
-                                <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}"/>
+                                <p:inputText id="voterId" value="#{userController.selected.userDetail.voterId}" required="true"/>
                                 <p:outputLabel value="Phone No" for="phoneNo"/>
-                                <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}"/>
+                                <p:inputText id="phoneNo" value="#{userController.selected.userDetail.phoneNo}" required="true"/>
                                 <p:outputLabel value="State" for="state"/>
-                                <p:inputText id="state" value="#{userController.selected.userDetail.address.stateName}"/>
+                                <p:inputText id="state" value="#{userController.selected.userDetail.address.stateName}" required="true"/>
                                 <p:outputLabel value="City" for="city"/>
-                                <p:inputText id="city" value="#{userController.selected.userDetail.address.city}"/>
+                                <p:inputText id="city" value="#{userController.selected.userDetail.address.city}" required="true"/>
                                 <p:outputLabel value="Country" for="country"/>
-                                <p:inputText id="country" value="#{userController.selected.userDetail.address.country}"/>
+                                <p:inputText id="country" value="#{userController.selected.userDetail.address.country}" required="true"/>
                             </p:panelGrid>
-                            <h:commandButton id="savebtn" actionListener="#{userController.create}" immediate="true" value="#{bundle.Save}"/>
-                            
+                            <h:commandButton id="savebtn" actionListener="#{userController.create}" value="#{bundle.Save}"/>
+
                             <p:commandButton id="cancelbtn" style="margin-left: 1em;" value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>
                         </h:form>
                     </div>
                     <div class="modal-footer" >
-<!--                        <input style="float: left" type="button" class="btn btn-success"  value="Sign Me Up" /> -->
+                        <!--                        <input style="float: left" type="button" class="btn btn-success"  value="Sign Me Up" /> -->
                         <span>&nbsp;&nbsp;&nbsp; Already a member? </span>
                         <span id="login-link" class="text-info" style="cursor:pointer;">  Login now  </span> 
                     </div>
@@ -86,19 +89,19 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel3">Send New Password</h4>
                     </div>
-                    
+
                     <form method="post" action="EmailServlet" name="forgot-password-form">
-                    <div class="modal-body" id="login_details">
-                        <span> Forgot Your Password? </span> <br/><br/>
-                        *<span style="font-weight:bold;">Your Email</span><br />
-                        <input style="width: 100%" type="text" placeholder="example@gmail.com" name="forgot_email" /><br/><br/>
-                        <input type="hidden" name="formName" value="forgot-password-form"/>
-                    </div>
-                    <div class="modal-footer" >
-                        <input style="position:relative;left:-5%" type="submit" class="btn btn-success" value="Send Password" />
-                        <span>Remember Password? </span>
-                        <span id="login-link1" class="text-info" style="cursor:pointer;">  Login now  </span>                          
-                    </div>
+                        <div class="modal-body" id="login_details">
+                            <span> Forgot Your Password? </span> <br/><br/>
+                            *<span style="font-weight:bold;">Your Email</span><br />
+                            <input style="width: 100%" type="text" placeholder="example@gmail.com" name="forgot_email" /><br/><br/>
+                            <input type="hidden" name="formName" value="forgot-password-form"/>
+                        </div>
+                        <div class="modal-footer" >
+                            <input style="position:relative;left:-5%" type="submit" class="btn btn-success" value="Send Password" />
+                            <span>Remember Password? </span>
+                            <span id="login-link1" class="text-info" style="cursor:pointer;">  Login now  </span>                          
+                        </div>
                     </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
