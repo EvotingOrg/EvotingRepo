@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="2" rendered="#{sessionBean.currentUser != null}" cellpadding="25px;" cellspacing="25px;">
+                <p:outputLabel value="#{bundle.CreateUsersLabel_userName}" for="userName" />
+                <h:outputText id="userName" value="#{sessionBean.currentUser.userName}" title="#{bundle.CreateUsersTitle_userName}" />
+
+                <p:outputLabel value="#{bundle.CreateUserDetailLabel_phoneNo}" for="phoneNo" />
+                <h:outputText id="phoneNo" value="#{sessionBean.currentUser.userDetail.phoneNo}" title="#{bundle.CreateUserDetailTitle_phoneNo}" />
+
+                <p:outputLabel value="Country" for="country"/>
+                <h:outputText id="country" value="#{sessionBean.currentUser.userDetail.address.country}" />
+                <p:outputLabel value="State" for="state"/>
+                <h:outputText value="#{sessionBean.currentUser.userDetail.address.stateName}" id="state"/>
+                <p:outputLabel value="City" for="city"/>
+                <h:outputText value="#{sessionBean.currentUser.userDetail.address.city}" id="city"/>
+                
+            </h:panelGrid>
+             
+            <p:growl id="messages" showDetail="true" />
+
+            <p:fileUpload value="#{fileUploadController.file}" mode="simple"/>
+
+            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}" disabled="false" />
+        
+        </h:form>
+    </ui:composition>
+</html>
