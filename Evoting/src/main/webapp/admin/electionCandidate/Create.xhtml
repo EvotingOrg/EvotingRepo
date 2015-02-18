@@ -37,7 +37,7 @@
                             <p:inputText id="id" value="#{electionCandidateController.selected.id}" title="#{bundle.CreateElectionCandidateTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{electionCandidateController.create}" value="#{bundle.Save}" update="ElectionCandidateCreateDialog.hide();"/>
+                    <p:commandButton actionListener="#{electionCandidateController.create}" value="#{bundle.Save}" oncomplete="ElectionCandidateCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionCandidateCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
