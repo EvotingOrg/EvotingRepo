@@ -24,14 +24,15 @@
                             <input style="width: 100%" type="password" placeholder="Password" name="j_password" /><br/>
                             <!--for login set 2 things.jdbc realm and run sql file .see resource src/resource folder-->
                         </div>
-                        <div class="modal-footer" >
-                            <input style="position:relative;left:-50%" type="submit" class="btn btn-success" value="Login" />
-                            <span class="text-info" id="fp-link" style="cursor:pointer;">Forgot Password?</span>
-                            <br/><br/>
-                            <span> Not a member yet?</span>-->
-                            <p:commandButton class="signup-link_popup"  immediate="true" value="Sign Up" actionListener="#{userController.prepareCreate()}" async="true"/>
+                        <div class="modal-footer" style="padding: 19px 20px 0px;">
+                            <input style="position:relative; left:-50%" type="submit" class="btn btn-success" value="Login" />
+                            <span class="text-info" id="fp-link" style="cursor:pointer;">Forgot Password?</span>                                                       
                         </div>                        
                     </form>
+                    <h:form style="position:relative; right:-40%; margin-bottom: 1em;">
+                        <span> Not a member yet?</span>-->
+                        <p:commandButton class="signup-link_popup text-info"  immediate="true" value="Sign Up" actionListener="#{userController.prepareCreate()}" async="true"/>
+                    </h:form>
 
                     <!--<span id="signup-link" style="cursor:pointer;" class="text-info">Sign Up!</span>-->
 
