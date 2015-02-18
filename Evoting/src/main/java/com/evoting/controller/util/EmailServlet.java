@@ -69,15 +69,17 @@ public class EmailServlet extends HttpServlet {
 
             //Generating random password string            
             String new_password = PasswordGenerator.passGen();            
+            String hash_password = HashedPasswordGenerator.generateHash(new_password);
             
             Users dbUser = userFacade.findByUserName(to);
-            dbUser.setPassword(HashedPasswordGenerator.generateHash(new_password));
+            dbUser.setPassword(hash_password);
             userFacade.edit(dbUser);
 
             subject = "Password Reset";
             body = "<html>Congratulation, Your Password is successfully reset. Your new login credentials are:<br/>"
                     + "Username: " + to
-                    + "Password: " + new_password + "<br/>"                    
+                    + "Password: " + new_password + "<br/>"
+                    + "Hashed Password: " + hash_password + "<br/>"
                     + "You can reset your password from 'My Account' after login.</html>";
         }
 
