@@ -3,6 +3,7 @@ package com.evoting.controller;
 import com.evoting.entity.UserRating;
 import com.evoting.controller.util.JsfUtil;
 import com.evoting.controller.util.JsfUtil.PersistAction;
+import com.evoting.entity.Poll;
 import com.evoting.facade.UserRatingFacade;
 
 import java.io.Serializable;
@@ -43,8 +44,8 @@ public class UserRatingController implements Serializable {
     }
 
     protected void initializeEmbeddableKey() {
-    }
-
+    }  
+    
     private UserRatingFacade getFacade() {
         return ejbFacade;
     }

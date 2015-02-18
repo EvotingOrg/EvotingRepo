@@ -6,6 +6,33 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition>
-        This is vote for election.
+        <h:form id="UserVotingCreateForm">
+            <h:panelGroup id="display">
+                <p:panelGrid columns="2" rendered="#{electionController.validElections().size()>0}">
+                    <p:outputLabel value="#{bundle.CreateUserVotingLabel_userId}" for="userId" />
+                    <h:outputText id="userId" value="#{sessionBean.loggedInUser}"/>
+
+                    <h:outputLabel value="Election" for="election"/>
+                    <p:selectOneMenu id="election" value="#{electionController.selected}" >
+                        <f:selectItems value="#{electionController.validElections}"
+                                       var="electionCandidateIdItem"
+                                       itemValue="#{electionCandidateIdItem}" itemLabel="#{electionCandidateIdItem.electionName}"/>
+                        <p:ajax update="@form" process="@this" event="blur"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="#{bundle.CreateUserVotingLabel_electionCandidateId}" for="electionCandidateId" />
+                    <p:selectOneMenu id="electionCandidateId" value="#{userVotingController.selected.electionCandidateId}" >
+                        <f:selectItems value="#{electionCandidateController.getElectionCandidatesByElection(electionCandidateController.selected)}"
+                                       var="electionCandidateIdItem"
+                                       itemValue="#{electionCandidateIdItem}" itemValue="#{electionCandidateIdItem.candidateId.name-electionCandidateIdItem.electionId.electionName}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.CreateUserVotingLabel_voteCastedTime}" for="voteCastedTime" />
+                    <p:calendar id="voteCastedTime" pattern="MM/dd/yyyy" value="#{userVotingController.selected.voteCastedTime}" title="#{bundle.EditUserVotingTitle_voteCastedTime}"  showOn="button"/>
+                </p:panelGrid>
+                <p:commandButton actionListener="#{userVotingController.create}" value="#{bundle.Save}" update="display,:UserVotingListForm:datalist,:growl" oncomplete="UserVotingCreateDialog.hide();"/>
+                <p:commandButton value="#{bundle.Cancel}" onclick="UserVotingCreateDialog.hide()"/>
+            </h:panelGroup>
+        </h:form>
+
     </ui:composition>
 </html>

@@ -7,6 +7,26 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        This is Rate for Category
+        <h:form id="UserRatingCreateForm">
+            <h:panelGroup id="display">
+                <p:panelGrid columns="2" rendered="#{productController.itemsAvailableSelectOne != null}">
+                    <p:outputLabel value="#{bundle.CreateUserRatingLabel_userId}" for="userId" />
+                    <h:outputText id="userId" value="#{sessionBean.loggedInUser}"/>
+
+                    <p:outputLabel value="#{bundle.CreateUserRatingLabel_productId}" for="productId" />
+                    <p:selectOneMenu id="productId" value="#{userRatingController.selected.productId}" required="true" requiredMessage="#{bundle.EditUserRatingRequiredMessage_productId}">
+                        <f:selectItems value="#{productController.itemsAvailableSelectOne}"
+                                       var="productIdItem"
+                                       itemValue="#{productIdItem}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.CreateUserRatingLabel_rating}" for="rating" />
+                    <p:rating id="rating" value="#{userRatingController.selected.rating}" />
+<!--                    <p:inputText id="rating" value="#{userRatingController.selected.rating}" title="#{bundle.CreateUserRatingTitle_rating}" />-->
+
+                </p:panelGrid>
+                <p:commandButton actionListener="#{userRatingController.create}" value="#{bundle.Save}" update="@form" ajax="false"/>
+            </h:panelGroup>
+        </h:form>
+
     </ui:composition>
 </html>

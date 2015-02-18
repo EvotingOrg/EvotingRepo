@@ -8,6 +8,34 @@
 
     <ui:composition>
 
+        <h:form id="UserPollingCreateForm">
+            <h:panelGroup id="display">
+                <h:panelGrid columns="2" rendered="#{pollController.validPolls.size()>0}" 
+                             cellpadding="20" cellspacing="20">
 
+                    <p:outputLabel value="#{bundle.CreateUserPollingLabel_userId}" for="userId" />
+                    <h:outputText id="userId" value="#{sessionBean.loggedInUser}"/>
+
+                    <p:outputLabel value="#{bundle.CreateUserPollingLabel_pollId}" for="pollId" />
+                    <p:selectOneMenu id="pollId" value="#{userPollingController.selected.pollId}" required="true">
+                        <f:selectItem itemValue="#{null}" itemLabel="Select One----"/>
+                        <f:selectItems value="#{pollController.itemsAvailableSelectOne}"
+                                       var="pollIdItem"
+                                       itemValue="#{pollIdItem}" itemLabel="#{pollIdItem.title}"/>
+                        <p:ajax event="blur" process="@this" update="pollOptionId"/>
+                    </p:selectOneMenu>
+
+                    <p:selectOneMenu id="pollOptionId" value="#{userPollingController.selected.pollOptionId}" required="true">
+                        <f:selectItem itemValue="#{null}" itemLabel="Select One----"/>
+                        <f:selectItems value="#{pollOptionsController.getPollOptionsByPoll(userPollingController.selected)}"
+                                       var="pollOptionIdItem"
+                                       itemValue="#{pollOptionIdItem}" itemLabel="#{pollOptionIdItem.optionName}"/>
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <p:commandButton actionListener="#{userPollingController.create}" value="#{bundle.Save}" 
+                                 update="@form" ajax="false"/>
+            </h:panelGroup>
+        </h:form>
     </ui:composition>
 </html>

@@ -9,7 +9,7 @@
         <ui:define name="title">Welcome to the Admin Home Page</ui:define>
         <ui:define name="body">
             <p:growl id="growl" life="3000" />
-            <p:layout style="min-width:400px;min-height:400px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
+            <p:layout style="min-width:400px;min-height:500px;padding: 4px;border-radius: 2px;border-collapse: 0px;" >
                 <p:layoutUnit position="west" resizable="true" size="200" minSize="200" maxSize="200">
                     <ui:include src="adminLinks.xhtml" rendered="#{logoutBean.isAdmin}"/>
                 </p:layoutUnit>
@@ -37,6 +37,10 @@
                                 <ui:include src="groups/List.xhtml"/>
                             </ui:fragment>
 
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'poll/List.xhtml'}">
+                                <ui:include src="poll/List.xhtml"/>
+                            </ui:fragment>
+
                             <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'pollOptions/List.xhtml'}">
                                 <ui:include src="pollOptions/List.xhtml"/>
                             </ui:fragment>
@@ -49,16 +53,16 @@
                                 <ui:include src="userPolling/List.xhtml"/>
                             </ui:fragment>
 
-                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userRating/List.xhtml'}">
-                                <ui:include src="userRating/List.xhtml"/>
-                            </ui:fragment>
-
                             <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userVoting/List.xhtml'}">
                                 <ui:include src="userVoting/List.xhtml"/>
                             </ui:fragment>
 
                             <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'users/List.xhtml'}">
                                 <ui:include src="users/List.xhtml"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{sessionBean.selectedAdminPage eq 'userRating/List.xhtml'}">
+                                <ui:include src="userRating/List.xhtml"/>
                             </ui:fragment>
 
                         </h:panelGroup>

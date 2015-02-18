@@ -45,6 +45,12 @@ public class ElectionController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
+    public List<Election> validElections(){
+    return ejbFacade.selectetValidElections();
+    
+    }
+    
+    
     private ElectionFacade getFacade() {
         return ejbFacade;
     }

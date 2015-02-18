@@ -3,6 +3,7 @@ package com.evoting.controller;
 import com.evoting.entity.ElectionCandidate;
 import com.evoting.controller.util.JsfUtil;
 import com.evoting.controller.util.JsfUtil.PersistAction;
+import com.evoting.entity.Election;
 import com.evoting.facade.ElectionCandidateFacade;
 
 import java.io.Serializable;
@@ -119,6 +120,10 @@ public class ElectionCandidateController implements Serializable {
 
     public List<ElectionCandidate> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+    
+    public List<ElectionCandidate> getElectionCandidatesByElection(Election election){
+        return ejbFacade.electionCandidateByElection(election);
     }
 
     @FacesConverter(forClass = ElectionCandidate.class)

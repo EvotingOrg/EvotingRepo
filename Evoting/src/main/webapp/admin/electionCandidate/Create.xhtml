@@ -14,15 +14,17 @@
                     <p:panelGrid columns="2" rendered="#{electionCandidateController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_electionId}" for="electionId" />
                         <p:selectOneMenu id="electionId" value="#{electionCandidateController.selected.electionId}" required="true" requiredMessage="#{bundle.EditElectionCandidateRequiredMessage_electionId}">
+                            <f:selectItem itemValue="#{null}" itemLabel="Select One----"/>
                             <f:selectItems value="#{electionController.itemsAvailableSelectOne}"
                                            var="electionIdItem"
-                                           itemValue="#{electionIdItem}"/>
+                                           itemValue="#{electionIdItem}" itemLabel="#{electionIdItem.electionName}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_candidateId}" for="candidateId" />
                         <p:selectOneMenu id="candidateId" value="#{electionCandidateController.selected.candidateId}" required="true" requiredMessage="#{bundle.EditElectionCandidateRequiredMessage_candidateId}">
+                            <f:selectItem itemValue="#{null}" itemLabel="Select One----"/>
                             <f:selectItems value="#{candidateController.itemsAvailableSelectOne}"
                                            var="candidateIdItem"
-                                           itemValue="#{candidateIdItem}"/>
+                                           itemValue="#{candidateIdItem}" itemLabel="#{candidateIdItem.name}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateElectionCandidateLabel_party}" for="party" />
                         <p:inputText id="party" value="#{electionCandidateController.selected.party}" title="#{bundle.CreateElectionCandidateTitle_party}" />
@@ -37,7 +39,7 @@
                             <p:inputText id="id" value="#{electionCandidateController.selected.id}" title="#{bundle.CreateElectionCandidateTitle_id}" />
                         </ui:remove>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{electionCandidateController.create}" value="#{bundle.Save}" oncomplete="ElectionCandidateCreateDialog.hide();"/>
+                    <p:commandButton actionListener="#{electionCandidateController.create}" update="display,:ElectionCandidateListForm:datalist,:growl" value="#{bundle.Save}" oncomplete="ElectionCandidateCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ElectionCandidateCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

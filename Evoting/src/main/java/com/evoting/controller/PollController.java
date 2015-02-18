@@ -81,6 +81,10 @@ public class PollController implements Serializable {
         return items;
     }
 
+    public List<Poll> getValidPolls() {
+        return ejbFacade.selectetValidPollings();
+    }
+
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

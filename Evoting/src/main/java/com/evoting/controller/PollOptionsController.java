@@ -3,9 +3,11 @@ package com.evoting.controller;
 import com.evoting.entity.PollOptions;
 import com.evoting.controller.util.JsfUtil;
 import com.evoting.controller.util.JsfUtil.PersistAction;
+import com.evoting.entity.Poll;
 import com.evoting.facade.PollOptionsFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,6 +20,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.persistence.Query;
 
 @Named("pollOptionsController")
 @SessionScoped
@@ -47,6 +50,10 @@ public class PollOptionsController implements Serializable {
 
     private PollOptionsFacade getFacade() {
         return ejbFacade;
+    }
+
+    public List<PollOptions> getPollOptionsByPoll(Poll poll) {
+        return ejbFacade.getPollOptionsByPoll(poll);
     }
 
     public PollOptions prepareCreate() {

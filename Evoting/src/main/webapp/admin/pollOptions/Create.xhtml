@@ -14,20 +14,18 @@
                     <p:panelGrid columns="2" rendered="#{pollOptionsController.selected != null}">
                         <p:outputLabel value="#{bundle.CreatePollOptionsLabel_pollId}" for="pollId" />
                         <p:selectOneMenu id="pollId" value="#{pollOptionsController.selected.pollId}" >
+                            <f:selectItem itemValue="#{null}" itemLabel=" Select One-----"/>
                             <f:selectItems value="#{pollController.itemsAvailableSelectOne}"
                                            var="pollIdItem"
-                                           itemValue="#{pollIdItem}"/>
+                                           itemValue="#{pollIdItem}" itemLabel="#{pollIdItem.title}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreatePollOptionsLabel_optionName}" for="optionName" />
                         <p:inputText id="optionName" value="#{pollOptionsController.selected.optionName}" title="#{bundle.CreatePollOptionsTitle_optionName}" />
                         <p:outputLabel value="#{bundle.CreatePollOptionsLabel_totalCount}" for="totalCount" />
-                        <p:inputText id="totalCount" value="#{pollOptionsController.selected.totalCount}" title="#{bundle.CreatePollOptionsTitle_totalCount}" />
+                        <h:outputText id="totalCount" value="#{pollOptionsController.selected.totalCount}" title="#{bundle.CreatePollOptionsTitle_totalCount}" />
                         <p:outputLabel value="#{bundle.CreatePollOptionsLabel_result}" for="result" />
-                        <p:inputText id="result" value="#{pollOptionsController.selected.result}" title="#{bundle.CreatePollOptionsTitle_result}" />
-                        <ui:remove>
-                            <p:outputLabel value="#{bundle.CreatePollOptionsLabel_id}" for="id" />
-                            <p:inputText id="id" value="#{pollOptionsController.selected.id}" title="#{bundle.CreatePollOptionsTitle_id}" />
-                        </ui:remove>
+                        <h:outputText id="result" value="#{pollOptionsController.selected.result}" title="#{bundle.CreatePollOptionsTitle_result}" />
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pollOptionsController.create}" value="#{bundle.Save}" update="display,:PollOptionsListForm:datalist,:growl" oncomplete="PollOptionsCreateDialog.hide();"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PollOptionsCreateDialog.hide()"/>
